@@ -1,0 +1,25 @@
+<h1>Club</h1>
+
+<p>
+  <b>Name</b><br>
+  {{club.name}}
+</p>
+
+<p>
+  <b>Country</b><br>
+  {{club.country_id}}
+</p>
+
+<div class="form-actions">
+  <a href="/clubs/{{club.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit Club
+  </a>
+  <button ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/clubs" class="btn">
+    Back to clubs
+  </a>
+</div>
+

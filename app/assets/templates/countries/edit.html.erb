@@ -1,0 +1,54 @@
+<form name="editCountry">
+  <fieldset>
+    <legend>
+      Edit Country
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          Name
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="country[name]"
+                   ng-model="country.name"
+                   class="text_field"
+                   required>
+          <span ng-show="editCountry.name.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Code3
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="country[code3]"
+                   ng-model="country.code3"
+                   class="text_field"
+                   required>
+          <span ng-show="editCountry.code3.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || editCountry.$invalid">
+        Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="country.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i>Delete
+      </button>
+      <a href="/countries" class="btn">
+        Back to countries
+      </a>
+    </div>
+  </fieldset>
+</form>
+

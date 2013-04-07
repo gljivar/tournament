@@ -1,4 +1,10 @@
 Tournament::Application.routes.draw do
+  resources :clubs
+
+
+  resources :countries
+
+
   get "welcome/index"
 
   # The priority is based upon order of creation:

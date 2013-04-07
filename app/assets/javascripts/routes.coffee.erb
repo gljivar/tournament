@@ -1,13 +1,37 @@
 root = global ? window
 angular = root.angular
 
-thisApp = angular.module("TournamentClient", ['ngCookies']).config(['$routeProvider', '$locationProvider' , 
+thisApp = angular.module("TournamentClient", ['ngCookies', 'clubs', 'countries']).config(['$routeProvider', '$locationProvider' , 
 ($routeProvider, $locationProvider) ->
   #$locationProvider.hashPrefix('');
   $locationProvider.html5Mode true
   $routeProvider.when("/",
     controller: "WelcomeCtrl"
     templateUrl: "<%= asset_path('welcome/index.html') %>"
+  ).when("/countries", 
+    controller: CountriesIndexCtrl
+    templateUrl: '<%= asset_path("countries/index.html") %>'
+  ).when("/countries/new",
+    controller: CountriesCreateCtrl
+    templateUrl: '<%= asset_path("countries/new.html") %>'
+  ).when("/countries/:id",
+    controller: CountriesShowCtrl
+    templateUrl: '<%= asset_path("countries/show.html") %>'
+  ).when("/countries/:id/edit",
+    controller: CountriesEditCtrl
+    templateUrl: '<%= asset_path("countries/edit.html") %>'
+  ).when("/clubs", 
+    controller: ClubsIndexCtrl
+    templateUrl: '<%= asset_path("clubs/index.html") %>'
+  ).when("/clubs/new",
+    controller: ClubsCreateCtrl
+    templateUrl: '<%= asset_path("clubs/new.html") %>'
+  ).when("/clubs/:id",
+    controller: ClubsShowCtrl
+    templateUrl: '<%= asset_path("clubs/show.html") %>'
+  ).when("/clubs/:id/edit",
+    controller: ClubsEditCtrl
+    templateUrl: '<%= asset_path("clubs/edit.html") %>'
   ).otherwise redirectTo: "/"
 ])
 

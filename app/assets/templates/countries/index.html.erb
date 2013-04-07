@@ -1,0 +1,37 @@
+<h1>Countries</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Code3</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="country in countries">
+      <td>
+        <a href="/countries/{{country.id}}">
+          {{country.name}}
+        </a>
+      </td>
+        <td>
+          {{country.code3}}
+        </td>
+      <td>
+        <a href="/countries/{{country.id}}/edit"
+          class="btn btn-primary"><i class="icon-edit"></i>
+          Edit
+        </a>
+        <button ng-click="destroy()" class="btn btn-danger">
+          <i class="icon-trash"></i> Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <a href='/countries/new' class="btn btn-primary">
+    <i class="icon-plus"></i>New
+  </a>
+</p>

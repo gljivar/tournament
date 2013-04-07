@@ -1,0 +1,25 @@
+<h1>Country</h1>
+
+<p>
+  <b>Name</b><br>
+  {{country.name}}
+</p>
+
+<p>
+  <b>Code3</b><br>
+  {{country.code3}}
+</p>
+
+<div class="form-actions">
+  <a href="/countries/{{country.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit Country
+  </a>
+  <button ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/countries" class="btn">
+    Back to countries
+  </a>
+</div>
+

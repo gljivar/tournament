@@ -1,0 +1,52 @@
+<form name="newClub">
+  <fieldset>
+    <legend>
+      New Club
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          Name
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="club[name]"
+                   ng-model="club.name"
+                   class="text_field"
+                   required>
+          <span ng-show="newClub.name.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Country
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="club[country_id]"
+                   ng-model="club.country_id"
+                   class="number_field"
+                   required>
+          <span ng-show="newClub.country_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || newClub.$invalid">
+        <i class="icon-save"></i> Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="club.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i> Delete
+      </button>
+      <a href="/clubs" class="btn">Back to clubs</a>
+    </div>
+  </fieldset>
+</form>
+
