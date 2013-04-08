@@ -1,7 +1,7 @@
-<form name="editClub">
+<form name="newCategory">
   <fieldset>
     <legend>
-      Edit Club
+      New Category
     </legend>
       <div class="control-group">
         <label class="control-label">
@@ -9,11 +9,11 @@
         </label>
         <div class="controls">
             <input type="text"
-                   name="club[name]"
-                   ng-model="club.name"
+                   name="category[name]"
+                   ng-model="category.name"
                    class="text_field"
                    required>
-          <span ng-show="editClub.name.$error.required"
+          <span ng-show="newCategory.name.$error.required"
                 class="help-inline">
             Required
           </span>
@@ -21,11 +21,15 @@
       </div>
       <div class="control-group">
         <label class="control-label">
-          Country
+          Comment
         </label>
         <div class="controls">
-          <select ng-controller="CountriesIndexCtrl" name="club[country_id]" ng-model="club.country_id" ng-options="c.id as c.name for c in countries" required></select>
-          <span ng-show="editClub.country_id.$error.required"
+            <input type="text"
+                   name="category[comment]"
+                   ng-model="category.comment"
+                   class="text_field"
+                   required>
+          <span ng-show="newCategory.comment.$error.required"
                 class="help-inline">
             Required
           </span>
@@ -33,17 +37,15 @@
       </div>
     <div class="form-actions">
       <button class="btn btn-success" ng-click="save()"
-        ng-disabled="isClean() || editClub.$invalid">
-        Save
+        ng-disabled="isClean() || newCategory.$invalid">
+        <i class="icon-save"></i> Save
       </button>
       <button ng-click="destroy()"
-              ng-show="club.id"
+              ng-show="category.id"
               class="btn btn-danger">
-              <i class="icon-trash"></i>Delete
+              <i class="icon-trash"></i> Delete
       </button>
-      <a href="/clubs" class="btn">
-        Back to clubs
-      </a>
+      <a href="/categories" class="btn">Back to categories</a>
     </div>
   </fieldset>
 </form>

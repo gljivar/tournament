@@ -7,7 +7,7 @@ respond_to :json
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @clubs }
+      format.json { render json: @clubs.to_json(:include => { :country => { :only => [:name] } }) }
     end
   end
 
@@ -15,10 +15,11 @@ respond_to :json
   # GET /clubs/1.json
   def show
     @club = Club.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @club }
+      #format.json { render json: @club }
+      format.json { render :json => @club.to_json(:include => :country) }
     end
   end
 

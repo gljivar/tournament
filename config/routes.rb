@@ -1,4 +1,7 @@
 Tournament::Application.routes.draw do
+  resources :categories
+
+
   resources :clubs
 
 

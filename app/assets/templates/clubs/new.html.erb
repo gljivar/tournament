@@ -24,11 +24,7 @@
           Country
         </label>
         <div class="controls">
-            <input type="number"
-                   name="club[country_id]"
-                   ng-model="club.country_id"
-                   class="number_field"
-                   required>
+              <select ng-controller="CountriesIndexCtrl" name="club[country_id]" ng-model="club.country_id" ng-options="c.id as c.name for c in countries" required></select>
           <span ng-show="newClub.country_id.$error.required"
                 class="help-inline">
             Required

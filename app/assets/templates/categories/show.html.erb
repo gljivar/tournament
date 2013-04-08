@@ -1,25 +1,25 @@
-<h1>Club</h1>
+<h1>Category</h1>
 
 <p>
   <b>Name</b><br>
-  {{club.name}}
+  {{category.name}}
 </p>
 
 <p>
-  <b>Country</b><br>
-  {{club.country.name}}
+  <b>Comment</b><br>
+  {{category.comment}}
 </p>
 
 <div class="form-actions">
-  <a href="/clubs/{{club.id}}/edit"
+  <a href="/categories/{{category.id}}/edit"
     class="btn btn-primary"><i class="icon-edit"></i>
-    Edit Club
+    Edit Category
   </a>
   <button ng-click="destroy()" class="btn btn-danger">
     <i class="icon-trash"></i> Delete
   </button>
-  <a href="/clubs" class="btn">
-    Back to clubs
+  <a href="/categories" class="btn">
+    Back to categories
   </a>
 </div>
 
