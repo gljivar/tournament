@@ -1,0 +1,35 @@
+<h1>Competitor</h1>
+
+<p>
+  <b>First name</b><br>
+  {{competitor.first_name}}
+</p>
+
+<p>
+  <b>Last name</b><br>
+  {{competitor.last_name}}
+</p>
+
+<p>
+  <b>Club</b><br>
+  {{competitor.club.name}}
+</p>
+
+<p>
+  <b>Category</b><br>
+  {{competitor.category.name}}
+</p>
+
+<div class="form-actions">
+  <a href="/competitors/{{competitor.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit Competitor
+  </a>
+  <button ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/competitors" class="btn">
+    Back to competitors
+  </a>
+</div>
+

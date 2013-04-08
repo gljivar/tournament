@@ -1,0 +1,76 @@
+<form name="newCompetitor">
+  <fieldset>
+    <legend>
+      New Competitor
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          First Name
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="competitor[first_name]"
+                   ng-model="competitor.first_name"
+                   class="text_field"
+                   required>
+          <span ng-show="newCompetitor.first_name.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Last Name
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="competitor[last_name]"
+                   ng-model="competitor.last_name"
+                   class="text_field"
+                   required>
+          <span ng-show="newCompetitor.last_name.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Club
+        </label>
+        <div class="controls">
+            <select ng-controller="ClubsIndexCtrl" name="competitor[club_id]" ng-model="competitor.club_id" ng-options="c.id as c.name for c in clubs" required></select>
+          <span ng-show="newCompetitor.club_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Category
+        </label>
+        <div class="controls">
+            <select ng-controller="CategoriesIndexCtrl" name="competitor[category_id]" ng-model="competitor.category_id" ng-options="c.id as c.name for c in categories" required></select>
+          <span ng-show="newCompetitor.category_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || newCompetitor.$invalid">
+        <i class="icon-save"></i> Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="competitor.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i> Delete
+      </button>
+      <a href="/competitors" class="btn">Back to competitors</a>
+    </div>
+  </fieldset>
+</form>
+
