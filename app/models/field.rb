@@ -1,4 +1,4 @@
 class Field < ActiveRecord::Base
   belongs_to :competition
-  attr_accessible :namei, :competition_id
+  attr_accessible :name, :competition_id
 end
