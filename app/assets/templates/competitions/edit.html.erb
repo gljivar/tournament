@@ -1,0 +1,70 @@
+<form name="editCompetition">
+  <fieldset>
+    <legend>
+      Edit Competition
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          Name
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="competition[name]"
+                   ng-model="competition.name"
+                   class="text_field"
+                   required>
+          <span ng-show="editCompetition.name.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Date Start
+        </label>
+        <div class="controls">
+            <input type="date"
+                   name="competition[date_start]"
+                   ng-model="competition.date_start"
+                   class="datetime_select"
+                   required>
+          <span ng-show="editCompetition.date_start.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Date End
+        </label>
+        <div class="controls">
+            <input type="date"
+                   name="competition[date_end]"
+                   ng-model="competition.date_end"
+                   class="datetime_select"
+                   required>
+          <span ng-show="editCompetition.date_end.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || editCompetition.$invalid">
+        Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="competition.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i>Delete
+      </button>
+      <a href="/competitions" class="btn">
+        Back to competitions
+      </a>
+    </div>
+  </fieldset>
+</form>
+

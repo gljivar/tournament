@@ -1,0 +1,30 @@
+<h1>Competition</h1>
+
+<p>
+  <b>Name</b><br>
+  {{competition.name}}
+</p>
+
+<p>
+  <b>Date start</b><br>
+  {{competition.date_start}}
+</p>
+
+<p>
+  <b>Date end</b><br>
+  {{competition.date_end}}
+</p>
+
+<div class="form-actions">
+  <a href="/competitions/{{competition.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit Competition
+  </a>
+  <button ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/competitions" class="btn">
+    Back to competitions
+  </a>
+</div>
+

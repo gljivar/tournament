@@ -1,0 +1,41 @@
+<h1>Competitions</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Name</th>
+        <th>Date start</th>
+        <th>Date end</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="competition in competitions">
+      <td>
+        <a href="/competitions/{{competition.id}}">
+          {{competition.name}}
+        </a>
+      </td>
+        <td>
+          {{competition.date_start}}
+        </td>
+        <td>
+          {{competition.date_end}}
+        </td>
+      <td>
+        <a href="/competitions/{{competition.id}}/edit"
+          class="btn btn-primary"><i class="icon-edit"></i>
+          Edit
+        </a>
+        <button ng-click="destroy()" class="btn btn-danger">
+          <i class="icon-trash"></i> Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <a href='/competitions/new' class="btn btn-primary">
+    <i class="icon-plus"></i>New
+  </a>
+</p>

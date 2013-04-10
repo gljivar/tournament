@@ -1,4 +1,10 @@
 Tournament::Application.routes.draw do
+  resources :fields
+
+
+  resources :competitions
+
+
   resources :competitors
 
 
