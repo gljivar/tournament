@@ -24,11 +24,7 @@
           Competition
         </label>
         <div class="controls">
-            <input type="number"
-                   name="field[competition_id]"
-                   ng-model="field.competition_id"
-                   class="number_field"
-                   required>
+            <select ng-controller="CompetitionsIndexCtrl" name="field[competition_id]" ng-model="field.competition_id" ng-options="c.id as c.name for c in competitions" required></select>
           <span ng-show="newField.competition_id.$error.required"
                 class="help-inline">
             Required

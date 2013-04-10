@@ -7,7 +7,7 @@ respond_to :json
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @fields }
+      format.json { render json: @fields.to_json(:include => { :competition => { :only => [:name] } } ) }
     end
   end
 
@@ -18,7 +18,7 @@ respond_to :json
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @field }
+      format.json { render json: @field.to_json(:include => { :competition => { :only => [:name] } } ) }
     end
   end
 
