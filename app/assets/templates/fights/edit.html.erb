@@ -1,0 +1,150 @@
+<form name="editFight">
+  <fieldset>
+    <legend>
+      Edit Fight
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          Number
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[number]"
+                   ng-model="fight.number"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.number.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Category
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[category_id]"
+                   ng-model="fight.category_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.category_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Field Initial
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[field_initial_id]"
+                   ng-model="fight.field_initial_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.field_initial_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Field Actual
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[field_actual_id]"
+                   ng-model="fight.field_actual_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.field_actual_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Competitor Blue
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[competitor_blue_id]"
+                   ng-model="fight.competitor_blue_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.competitor_blue_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Competitor Red
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[competitor_red_id]"
+                   ng-model="fight.competitor_red_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.competitor_red_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Previous Fight Blue
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[previous_fight_blue_id]"
+                   ng-model="fight.previous_fight_blue_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.previous_fight_blue_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Previous Fight Red
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="fight[previous_fight_red_id]"
+                   ng-model="fight.previous_fight_red_id"
+                   class="number_field"
+                   required>
+          <span ng-show="editFight.previous_fight_red_id.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || editFight.$invalid">
+        Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="fight.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i>Delete
+      </button>
+      <a href="/fights" class="btn">
+        Back to fights
+      </a>
+    </div>
+  </fieldset>
+</form>
+

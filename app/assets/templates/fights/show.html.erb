@@ -1,0 +1,55 @@
+<h1>Fight</h1>
+
+<p>
+  <b>Number</b><br>
+  {{fight.number}}
+</p>
+
+<p>
+  <b>Category</b><br>
+  {{fight.category_id}}
+</p>
+
+<p>
+  <b>Field initial</b><br>
+  {{fight.field_initial_id}}
+</p>
+
+<p>
+  <b>Field actual</b><br>
+  {{fight.field_actual_id}}
+</p>
+
+<p>
+  <b>Competitor blue</b><br>
+  {{fight.competitor_blue_id}}
+</p>
+
+<p>
+  <b>Competitor red</b><br>
+  {{fight.competitor_red_id}}
+</p>
+
+<p>
+  <b>Previous fight blue</b><br>
+  {{fight.previous_fight_blue_id}}
+</p>
+
+<p>
+  <b>Previous fight red</b><br>
+  {{fight.previous_fight_red_id}}
+</p>
+
+<div class="form-actions">
+  <a href="/fights/{{fight.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit Fight
+  </a>
+  <button ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/fights" class="btn">
+    Back to fights
+  </a>
+</div>
+

@@ -1,0 +1,61 @@
+<h1>Fights</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Number</th>
+        <th>Category</th>
+        <th>Field initial</th>
+        <th>Field actual</th>
+        <th>Competitor blue</th>
+        <th>Competitor red</th>
+        <th>Previous fight blue</th>
+        <th>Previous fight red</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="fight in fights">
+      <td>
+        <a href="/fights/{{fight.id}}">
+          {{fight.number}}
+        </a>
+      </td>
+        <td>
+          {{fight.category_id}}
+        </td>
+        <td>
+          {{fight.field_initial_id}}
+        </td>
+        <td>
+          {{fight.field_actual_id}}
+        </td>
+        <td>
+          {{fight.competitor_blue_id}}
+        </td>
+        <td>
+          {{fight.competitor_red_id}}
+        </td>
+        <td>
+          {{fight.previous_fight_blue_id}}
+        </td>
+        <td>
+          {{fight.previous_fight_red_id}}
+        </td>
+      <td>
+        <a href="/fights/{{fight.id}}/edit"
+          class="btn btn-primary"><i class="icon-edit"></i>
+          Edit
+        </a>
+        <button ng-click="destroy()" class="btn btn-danger">
+          <i class="icon-trash"></i> Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <a href='/fights/new' class="btn btn-primary">
+    <i class="icon-plus"></i>New
+  </a>
+</p>
