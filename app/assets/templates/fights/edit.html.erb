@@ -24,11 +24,7 @@
           Category
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[category_id]"
-                   ng-model="fight.category_id"
-                   class="number_field"
-                   required>
+          <select ng-controller="CategoriesIndexCtrl" name="fight[category_id]" ng-model="fight.category_id" ng-options="c.id as c.name for c in categories" required></select>
           <span ng-show="editFight.category_id.$error.required"
                 class="help-inline">
             Required
@@ -40,11 +36,7 @@
           Field Initial
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[field_initial_id]"
-                   ng-model="fight.field_initial_id"
-                   class="number_field"
-                   required>
+            <select ng-controller="FieldsIndexCtrl" name="fight[field_initial_id]" ng-model="fight.field_initial_id" ng-options="c.id as c.name for c in fields" required></select>
           <span ng-show="editFight.field_initial_id.$error.required"
                 class="help-inline">
             Required
@@ -56,11 +48,7 @@
           Field Actual
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[field_actual_id]"
-                   ng-model="fight.field_actual_id"
-                   class="number_field"
-                   required>
+          <select ng-controller="FieldsIndexCtrl" name="fight[field_actual_id]" ng-model="fight.field_actual_id" ng-options="c.id as c.name for c in fields" required></select>
           <span ng-show="editFight.field_actual_id.$error.required"
                 class="help-inline">
             Required
@@ -72,15 +60,7 @@
           Competitor Blue
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[competitor_blue_id]"
-                   ng-model="fight.competitor_blue_id"
-                   class="number_field"
-                   required>
-          <span ng-show="editFight.competitor_blue_id.$error.required"
-                class="help-inline">
-            Required
-          </span>
+            <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_blue_id]" ng-model="fight.competitor_blue_id" ng-options="c.id as c.last_name for c in competitors"></select>
         </div>
       </div>
       <div class="control-group">
@@ -88,15 +68,7 @@
           Competitor Red
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[competitor_red_id]"
-                   ng-model="fight.competitor_red_id"
-                   class="number_field"
-                   required>
-          <span ng-show="editFight.competitor_red_id.$error.required"
-                class="help-inline">
-            Required
-          </span>
+            <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_red_id]" ng-model="fight.competitor_red_id" ng-options="c.id as c.last_name for c in competitors"></select>
         </div>
       </div>
       <div class="control-group">
@@ -104,15 +76,7 @@
           Previous Fight Blue
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[previous_fight_blue_id]"
-                   ng-model="fight.previous_fight_blue_id"
-                   class="number_field"
-                   required>
-          <span ng-show="editFight.previous_fight_blue_id.$error.required"
-                class="help-inline">
-            Required
-          </span>
+            <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_blue_id]" ng-model="fight.previous_fight_blue_id" ng-options="c.id as c.id for c in fights"></select>
         </div>
       </div>
       <div class="control-group">
@@ -120,15 +84,7 @@
           Previous Fight Red
         </label>
         <div class="controls">
-            <input type="number"
-                   name="fight[previous_fight_red_id]"
-                   ng-model="fight.previous_fight_red_id"
-                   class="number_field"
-                   required>
-          <span ng-show="editFight.previous_fight_red_id.$error.required"
-                class="help-inline">
-            Required
-          </span>
+            <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_red_id]" ng-model="fight.previous_fight_red_id" ng-options="c.id as c.id for c in fights"></select>
         </div>
       </div>
     <div class="form-actions">

@@ -7,7 +7,7 @@ respond_to :json
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @fights }
+      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name] }, :competitor_red => { :only => [:last_name] }, :previous_fight_blue => { :only => [:name] }, :previous_fight_red => { :only => [:name] } } ) }
     end
   end
 
@@ -18,7 +18,8 @@ respond_to :json
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @fight }
+      format.json { render json: @fight.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name] }, :competitor_red => { :only => [:last_name] }, :previous_fight_blue => { :only => [:name] }, :previous_fight_red => { :only => [:name] } } ) }
+
     end
   end
 
