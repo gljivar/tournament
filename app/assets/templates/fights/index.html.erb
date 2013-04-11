@@ -10,6 +10,7 @@
         <th>Competitor red</th>
         <th>Previous fight blue</th>
         <th>Previous fight red</th>
+        <th>Competitor winner</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -40,6 +41,9 @@
         </td>
         <td>
           {{fight.previous_fight_red.number}}
+        </td>
+        <td>
+          {{fight.competitor_winner.last_name}}
         </td>
       <td>
         <a href="/fights/{{fight.id}}/edit"

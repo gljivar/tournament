@@ -1,5 +1,5 @@
 class Fight < ActiveRecord::Base
-  attr_accessible :number, :category_id, :field_initial_id, :field_actual_id, :competitor_blue_id, :competitor_red_id, :previous_fight_blue_id, :previous_fight_red_id
+  attr_accessible :number, :category_id, :field_initial_id, :field_actual_id, :competitor_blue_id, :competitor_red_id, :previous_fight_blue_id, :previous_fight_red_id, :competitor_winner_id
 
   belongs_to :category
 
@@ -8,8 +8,23 @@ class Fight < ActiveRecord::Base
 
   belongs_to :competitor_blue, :class_name => "Competitor", :foreign_key => :competitor_blue_id
   belongs_to :competitor_red, :class_name => "Competitor", :foreign_key => :competitor_red_id
+  belongs_to :competitor_winner, :class_name => "Competitor", :foreign_key => :competitor_winner_id
 
   belongs_to :previous_fight_blue, :class_name => "Fight", :foreign_key => :previous_fight_blue_id
   belongs_to :previous_fight_red, :class_name => "Fight", :foreign_key => :previous_fight_red_id
+
+  def save
+    super
+    
+#    @fb = Fight.first(:previous_fight_blue_id => number)
+#    @fb.fight.competitor_blue_id = competitor_winner_id
+#    @fb.save
+   
+#    @fr = Fight.find(:first, :conditions => { :previous_fight_red_id => number } )
+#    if !@fr.nil? and !competitor_winner_id.nil?
+#      @fr.competitor_red_id = competitor_winner_id
+#      @fr.save
+#    end
+  end
 
 end
