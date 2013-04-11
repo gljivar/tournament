@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410222547) do
+ActiveRecord::Schema.define(:version => 20130411195831) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130410222547) do
     t.integer  "club_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "lot_number"
   end
 
   add_index "competitors", ["category_id"], :name => "index_competitors_on_category_id"

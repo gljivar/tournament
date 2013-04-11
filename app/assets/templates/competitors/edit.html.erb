@@ -37,6 +37,22 @@
       </div>
       <div class="control-group">
         <label class="control-label">
+          Lot number 
+        </label>
+        <div class="controls">
+            <input type="number"
+                   name="competitor[lot_number]"
+                   ng-model="competitor.lot_number"
+                   class="text_field"
+                   required>
+          <span ng-show="editCompetitor.lot_number.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
           Club
         </label>
         <div class="controls">
