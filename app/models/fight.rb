@@ -13,18 +13,20 @@ class Fight < ActiveRecord::Base
   belongs_to :previous_fight_blue, :class_name => "Fight", :foreign_key => :previous_fight_blue_id
   belongs_to :previous_fight_red, :class_name => "Fight", :foreign_key => :previous_fight_red_id
 
-  def save
-    super
-    
-#    @fb = Fight.first(:previous_fight_blue_id => number)
-#    @fb.fight.competitor_blue_id = competitor_winner_id
-#    @fb.save
-   
-#    @fr = Fight.find(:first, :conditions => { :previous_fight_red_id => number } )
-#    if !@fr.nil? and !competitor_winner_id.nil?
-#      @fr.competitor_red_id = competitor_winner_id
-#      @fr.save
-#    end
-  end
+  after_save :propagate_winner
+
+  def propagate_winner
+    @fb = Fight.find(:first, :conditions => { :previous_fight_blue_id => id } )
+    if @fb
+      @fb.competitor_blue_id = competitor_winner_id
+      @fb.save
+    end
+
+    @fr = Fight.find(:first, :conditions => { :previous_fight_red_id => id } )
+    if @fr
+      @fr.competitor_red_id = competitor_winner_id
+      @fr.save
+    end
+  end 
 
 end
