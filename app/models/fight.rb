@@ -13,7 +13,7 @@ class Fight < ActiveRecord::Base
   belongs_to :previous_fight_blue, :class_name => "Fight", :foreign_key => :previous_fight_blue_id
   belongs_to :previous_fight_red, :class_name => "Fight", :foreign_key => :previous_fight_red_id
 
-  after_save :propagate_winner
+#  after_save :propagate_winner
 
   def propagate_winner
     @fb = Fight.find(:first, :conditions => { :previous_fight_blue_id => id } )
