@@ -9,6 +9,13 @@ FightsIndexCtrl = ($scope, Fight) ->
       original = @fight
       @fight.destroy ->
         $scope.fights = _.without($scope.fights, original)
+
+  $scope.isPreviousFight = (fight) ->
+    console.log(fight)
+    console.log(fight.number)
+    console.log(scope.fight.number)
+    fight.number < $scope.fight.number 
+  
         
 FightsIndexCtrl.$inject = ['$scope', 'Fight'];
 
@@ -52,6 +59,7 @@ FightsEditCtrl = ($scope, $location, $routeParams, Fight) ->
   $scope.save = ->
     Fight.update $scope.fight, (fight) ->
       $location.path "/fights"
+
 
 FightsEditCtrl.$inject = ['$scope', '$location', '$routeParams', 'Fight'];
 

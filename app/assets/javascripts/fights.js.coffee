@@ -17,4 +17,6 @@ angular.module("fights", ["ngResource"]).factory "Fight", ['$resource', ($resour
 
   Fight
 ]
+
+
 root.angular = angular
