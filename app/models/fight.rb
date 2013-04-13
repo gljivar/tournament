@@ -18,14 +18,14 @@ class Fight < ActiveRecord::Base
   def propagate_winner
     @fb = Fight.find(:first, :conditions => { :previous_fight_blue_id => id } )
     if @fb
-      @fb.update_attributes(:competitor_blue_id =>  competitor_winner_id)
+      @fb.update_column(:competitor_blue_id, competitor_winner_id)
 #      @fb.competitor_blue_id = competitor_winner_id
 #      @fb.save
     end
 
     @fr = Fight.find(:first, :conditions => { :previous_fight_red_id => id } )
     if @fr
-      @fr.update_attributes(:competitor_red_id => competitor_winner_id)
+      @fr.update_column(:competitor_red_id, competitor_winner_id)
 #      @fr.competitor_red_id = competitor_winner_id
 #      @fr.save
     end
