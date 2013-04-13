@@ -3,7 +3,8 @@
     <legend>
       Edit Fight
     </legend>
-      <div class="control-group">
+    <div class="row">
+      <div class="control-group span4">
         <label class="control-label">
           Number
         </label>
@@ -19,19 +20,21 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Category
         </label>
         <div class="controls">
-          <select ng-controller="CategoriesIndexCtrl" name="fight[category_id]" ng-model="fight.category_id" ng-options="c.id as c.name for c in categories" required></option</select>
+          <select ng-controller="CategoriesIndexCtrl" name="fight[category_id]" ng-model="fight.category_id" ng-options="c.id as c.name for c in categories" required></select>
           <span ng-show="editFight.category_id.$error.required"
                 class="help-inline">
             Required
           </span>
         </div>
       </div>
-      <div class="control-group">
+    </div> <!-- End first row -->
+    <div class="row">
+      <div class="control-group span4">
         <label class="control-label">
           Field Initial
         </label>
@@ -43,7 +46,7 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Field Actual
         </label>
@@ -55,7 +58,9 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+    </div> <!-- End second row -->
+    <div class="row">
+      <div class="control-group span4">
         <label class="control-label">
           Competitor Blue
         </label>
@@ -63,7 +68,7 @@
             <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_blue_id]" ng-model="fight.competitor_blue_id" ng-options="c.id as c.last_name for c in competitors | filter: { category_id : fight.category_id }"><option value=""></option></select>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Competitor Red
         </label>
@@ -71,7 +76,9 @@
             <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_red_id]" ng-model="fight.competitor_red_id" ng-options="c.id as c.last_name for c in competitors | filter: { category_id : fight.category_id }"><option value=""></option></select>
         </div>
       </div>
-      <div class="control-group">
+    </div> <!-- End third row -->
+    <div class="row">
+      <div class="control-group span">
         <label class="control-label">
           Competitor Winner
         </label>
@@ -79,7 +86,9 @@
             <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_winner_id]" ng-model="fight.competitor_winner_id" ng-options="c.id as c.last_name for c in competitors | filter: { category_id : fight.category_id }"><option value=""></option></select>
         </div>
       </div>
-      <div class="control-group">
+    </div> <!-- End fourth row -->
+    <div class="row">
+      <div class="control-group span4">
         <label class="control-label">
           Previous Fight Blue
         </label>
@@ -87,7 +96,7 @@
             <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_blue_id]" ng-model="fight.previous_fight_blue_id" ng-options="c.id as c.number for c in fights"><option value=""></option></select>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Previous Fight Red
         </label>
@@ -95,6 +104,7 @@
             <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_red_id]" ng-model="fight.previous_fight_red_id" ng-options="c.id as c.number for c in fights"><option value=""></option></select>
         </div>
       </div>
+    </div> <!-- End fifth row -->
     <div class="form-actions">
       <button class="btn btn-success" ng-click="save()"
         ng-disabled="isClean() || editFight.$invalid">
