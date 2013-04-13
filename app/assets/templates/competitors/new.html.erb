@@ -3,7 +3,8 @@
     <legend>
       New Competitor
     </legend>
-      <div class="control-group">
+    <div class="row">
+      <div class="control-group span4">
         <label class="control-label">
           First Name
         </label>
@@ -19,7 +20,7 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Last Name
         </label>
@@ -35,7 +36,9 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+    </div> 
+    <div class="row">
+      <div class="control-group span"> 
         <label class="control-label">
           Lot number
         </label>
@@ -51,7 +54,9 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+    </div>
+    <div class="row"> 
+      <div class="control-group span4">
         <label class="control-label">
           Club
         </label>
@@ -63,7 +68,7 @@
           </span>
         </div>
       </div>
-      <div class="control-group">
+      <div class="control-group span4">
         <label class="control-label">
           Category
         </label>
@@ -75,6 +80,7 @@
           </span>
         </div>
       </div>
+    </div>
     <div class="form-actions">
       <button class="btn btn-success" ng-click="save()"
         ng-disabled="isClean() || newCompetitor.$invalid">
