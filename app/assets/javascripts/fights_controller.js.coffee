@@ -10,13 +10,9 @@ FightsIndexCtrl = ($scope, Fight) ->
       @fight.destroy ->
         $scope.fights = _.without($scope.fights, original)
 
-  $scope.isPreviousFight = (fight) ->
-    console.log(fight)
-    console.log(fight.number)
-    console.log(scope.fight.number)
-    fight.number < $scope.fight.number 
-  
-        
+  $scope.isPreviousFight = (currentFight) ->
+    return currentFight.number < 15 #$scope.fight.number
+
 FightsIndexCtrl.$inject = ['$scope', 'Fight'];
 
 FightsCreateCtrl = ($scope, $location, Fight) ->
