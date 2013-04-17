@@ -4,6 +4,9 @@ root = global ? window
 CompetitorsIndexCtrl = ($scope, Competitor) ->
   $scope.competitors = Competitor.query()
 
+  $scope.isPossibleWinner = (value) ->
+    return ( value.id == $scope.fight.competitor_blue_id || value.id == $scope.fight.competitor_red_id)
+
   $scope.destroy = ->
     if confirm("Are you sure?")
       original = @competitor
