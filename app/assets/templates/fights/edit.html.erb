@@ -83,7 +83,7 @@
           Competitor Winner
         </label>
         <div class="controls">
-            <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_winner_id]" ng-model="fight.competitor_winner_id" ng-options="c.id as c.last_name for c in competitors | filter: { category_id : fight.category_id }"><option value=""></option></select>
+            <select ng-controller="CompetitorsIndexCtrl" name="fight[competitor_winner_id]" ng-model="fight.competitor_winner_id" ng-options="c.id as c.last_name for c in competitors | filter:isPossibleWinner"><option value=""></option></select>
         </div>
       </div>
     </div> <!-- End fourth row -->
@@ -93,7 +93,11 @@
           Previous Fight Blue
         </label>
         <div class="controls">
+<<<<<<< HEAD
             <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_blue_id]" ng-model="fight.previous_fight_blue_id" ng-options="c.id as c.number for c in fights | filter: {category_id:fight.category_id}"><option value=""></option></select>
+=======
+            <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_blue_id]" ng-model="fight.previous_fight_blue_id" ng-options="c.id as c.number for c in fights | filter:isPossiblePrevious"><option value=""></option></select>
+>>>>>>> 7bfee503fd55f5fd79fed4e9ebceaa21930dd225
         </div>
       </div>
       <div class="control-group span4">
@@ -101,7 +105,11 @@
           Previous Fight Red
         </label>
         <div class="controls">
+<<<<<<< HEAD
             <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_red_id]" ng-model="fight.previous_fight_red_id" ng-options="c.id as c.number for c in fights | filter: {category_id:fight.category_id}"><option value=""></option></select>
+=======
+            <select ng-controller="FightsIndexCtrl" name="fight[previous_fight_red_id]" ng-model="fight.previous_fight_red_id" ng-options="c.id as c.number for c in fights | filter:isPossiblePrevious"><option value=""></option></select>
+>>>>>>> 7bfee503fd55f5fd79fed4e9ebceaa21930dd225
         </div>
       </div>
     </div> <!-- End fifth row -->
