@@ -7,6 +7,9 @@ thisApp = angular.module("TournamentClient", ['ngCookies', 'fights', 'fields', '
   $locationProvider.html5Mode true
   $routeProvider.when("/",
     redirectTo: "/competitions"
+  ).when("/field_fights",
+    controller: FieldFightsIndexCtrl
+    templateUrl: '<%= asset_path("field_fights/index.html") %>'
   ).when("/countries", 
     controller: CountriesIndexCtrl
     templateUrl: '<%= asset_path("countries/index.html") %>'

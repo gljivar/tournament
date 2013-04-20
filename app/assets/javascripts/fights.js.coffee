@@ -9,6 +9,7 @@ angular.module("fights", ["ngResource"]).factory "Fight", ['$resource', ($resour
 
     destroy:
       method: "DELETE"
+
   )
   Fight::destroy = (cb) ->
     Fight.remove
