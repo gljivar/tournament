@@ -1,0 +1,58 @@
+<h1>Field Fights</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Number</th>
+        <th>Category</th>
+        <th>Field initial</th>
+        <th>Field actual</th>
+        <th>Competitor blue</th>
+        <th>Competitor red</th>
+        <th>Previous fight blue</th>
+        <th>Previous fight red</th>
+        <th>Competitor winner</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="fight in field_fights">
+      <td>
+        <a href="/fights/{{fight.id}}">
+          {{fight.number}}
+        </a>
+      </td>
+        <td>
+          {{fight.category.name}}
+        </td>
+        <td>
+          {{fight.field_initial.name}}
+        </td>
+        <td>
+          {{fight.field_actual.name}}
+        </td>
+        <td>
+          {{fight.competitor_blue.last_name}}
+        </td>
+        <td>
+          {{fight.competitor_red.last_name}}
+        </td>
+        <td>
+          {{fight.previous_fight_blue.number}}
+        </td>
+        <td>
+          {{fight.previous_fight_red.number}}
+        </td>
+        <td>
+          {{fight.competitor_winner.last_name}}
+        </td>
+      <td>
+        <a href="/fights/{{fight.id}}/edit"
+          class="btn btn-primary"><i class="icon-edit"></i>
+          Edit
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</p>

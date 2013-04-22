@@ -1,6 +1,6 @@
 root = global ? window
 
-angular.module("fights", ["ngResource"]).factory "Fight", ['$resource', ($resource) ->
+angular.module("fights", ["ngResourceWithUrl"]).factory "Fight", ['$resourceUrl', ($resource) ->
   Fight = $resource("/fights/:id",
     id: "@id"
   ,
@@ -9,6 +9,11 @@ angular.module("fights", ["ngResource"]).factory "Fight", ['$resource', ($resour
 
     destroy:
       method: "DELETE"
+
+    field_fights:
+      method: "GET"
+      url: "/field_fights:id"
+      isArray: true
 
   )
   Fight::destroy = (cb) ->

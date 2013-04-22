@@ -1,5 +1,5 @@
 Tournament::Application.routes.draw do
-  get "field_fights/index", :as => :field_fights_path  
+  match "field_fights" => 'field_fights#index', :as => :field_fights_path  
 
   resources :fights
 
