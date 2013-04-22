@@ -15,6 +15,11 @@ angular.module("fights", ["ngResourceWithUrl"]).factory "Fight", ['$resourceUrl'
       url: "/field_fights:id"
       isArray: true
 
+    field_fights_fights:
+      method: "GET"
+      url: "/field_fights/:field_actual_id"
+      isArray: true
+
   )
   Fight::destroy = (cb) ->
     Fight.remove
