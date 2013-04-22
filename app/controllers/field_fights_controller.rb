@@ -1,6 +1,10 @@
 class FieldFightsController < ApplicationController
   def index
-    @fights = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", 1, 1, 1, 3] 
+    @field_actual_id = 1
+    @limit_previous = 1
+    @limit_next = 3
+    
+    @fights = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
 
     respond_to do |format|
       format.html # index.html.erb
