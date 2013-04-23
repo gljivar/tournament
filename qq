@@ -1,6 +1,6 @@
 class FieldFightsController < ApplicationController
   def index
-    @field_actual_id = 2
+    @field_actual_id = 1
     @limit_previous = 1
     @limit_next = 3
     

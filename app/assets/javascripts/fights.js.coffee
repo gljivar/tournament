@@ -12,7 +12,11 @@ angular.module("fights", ["ngResourceWithUrl"]).factory "Fight", ['$resourceUrl'
 
     field_fights:
       method: "GET"
-      url: "/field_fights:id"
+      url: "/field_fights/:id"
+      params:
+        param1: "hello"
+        param2: "hello2"
+        #id: 23
       isArray: true
 
     field_fights_fights:
