@@ -1,10 +1,21 @@
 class FieldFightsController < ApplicationController
   def index
-    @field_actual_id = 2
+
+    @competition_id = 1
+    @fields = Field.where(:competition_id => @competition_id)
+
     @limit_previous = 1
     @limit_next = 3
-    
-    @fights = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
+
+    @fights = []
+    @fields.each do |field|
+      @field_actual_id = field.id
+
+      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
+
+      @fights = @fights + @fights_current
+
+    end
 
     respond_to do |format|
       format.html # index.html.erb
