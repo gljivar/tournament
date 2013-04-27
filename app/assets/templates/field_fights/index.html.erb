@@ -1,14 +1,31 @@
 <h1>Field Fights</h1>
 <div ng-controller="FieldsIndexCtrl">
-<ul ng-repeat="field in fields">
-  <li>
-    {{field.name}}
-    <ul ng-repeat="fight in field_fights | filter: { field_actual_id : field.id}">
-      <li>{{fight.number}}
-      </li>
-    </ul>
-  </li>
-</ul>
+  <div class="well row" ng-repeat="field in fields">
+    <div class="span9">
+      <div class="label label-info">{{field.name}}</div>
+    </div>
+    <div class="span9">
+      <div class="span2" ng-class="{1==1 ? "yes" : "no"}" ng-repeat="fight in field_fights | filter: { field_actual_id : field.id }">
+        <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
+        <div>
+          <div>
+            {{fight.competitor_blue.last_name}}
+            <a href="/fights/{{fight.id}}/edit" 
+              ng-show="(fight.competitor_winner_id == null && $index == 0 && ( field_fights | filter: { field_actual_id : field.id } ).length == 1) || (fight.competitor_winner_id == null && $index == 1 && ( field_fights | filter: { field_actual_id : field.id } ).length > 1)"
+              class="btn btn-primary">
+            Winner
+            </a>
+          </div>
+        {{fight.competitor_red.last_name}}
+        <a href="/fights/{{fight.id}}/edit"
+          ng-show="(fight.competitor_winner_id == null && $index == 0 && ( field_fights | filter: { field_actual_id : field.id } ).length == 1) || (fight.competitor_winner_id == null && $index == 1 && ( field_fights | filter: { field_actual_id : field.id } ).length > 1)"
+          class="btn btn-danger">  
+          Winner
+        </a>
+        </div>
+      </div>
+    </div>  
+  </div>
 </div>
 <table class="table table-striped">
   <thead>
