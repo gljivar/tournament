@@ -10,17 +10,21 @@
         <div>
           <div class="text-info" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_blue_id}">
             {{fight.competitor_blue.last_name}}
-            <button class="btn btn-primary"
+            <button class="btn btn-primary pull-right"
               ng-show="(fight.competitor_winner_id == null && $index == 0 && ( field_fights | filter: { field_actual_id : field.id } ).length == 1) || (fight.competitor_winner_id == null && $index == 1 && ( field_fights | filter: { field_actual_id : field.id } ).length > 1)" ng-click="save(fight, fight.competitor_blue_id)">
             Winner
             </button>
+            </br>
+            <small>{{fight.competitor_blue.club.name}}</small>
           </div>
           <div class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">
             {{fight.competitor_red.last_name}}
-            <button class="btn btn-danger" 
+            <button class="btn btn-danger pull-right" 
               ng-show="(fight.competitor_winner_id == null && $index == 0 && ( field_fights | filter: { field_actual_id : field.id } ).length == 1) || (fight.competitor_winner_id == null && $index == 1 && ( field_fights | filter: { field_actual_id : field.id } ).length > 1)" ng-click="save(fight, fight.competitor_red_id)">
             Winner
             </button>
+            </br>
+            <small>{{fight.competitor_red.club.name}}</small>
           </div>
         </div>
       </div>
