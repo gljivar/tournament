@@ -14,8 +14,7 @@ angular.module("fights", ["ngResourceWithUrl"]).factory "Fight", ['$resourceUrl'
       method: "GET"
       url: "/field_fights/:id"
       params:
-        param1: "hello"
-        param2: "hello2"
+        param1: "test"
         #id: 23
       isArray: true
 
