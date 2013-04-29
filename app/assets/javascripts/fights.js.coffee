@@ -18,9 +18,9 @@ angular.module("fights", ["ngResourceWithUrl"]).factory "Fight", ['$resourceUrl'
         #id: 23
       isArray: true
 
-    field_fights_fights:
+    repeater:
       method: "GET"
-      url: "/field_fights/:field_actual_id"
+      url: "/repeater/:id"
       isArray: true
 
   )

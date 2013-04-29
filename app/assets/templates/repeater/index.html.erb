@@ -1,0 +1,23 @@
+<h1>Field Fights</h1>
+    <div class="span9 margin-left-0">
+      <div class="label label-info">Field id</div>
+    </div>
+    <div class="span9 margin-left-0">
+      <div class="span2 well well-small margin-left-20" ng-repeat="fight in field_fights">
+        <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
+        <div>
+          <div class="text-info" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_blue_id}">
+            <strong>{{fight.competitor_blue.last_name}}</strong>
+            </br>
+            <small>({{fight.competitor_blue.club.name}})</small>
+          </div>
+          <div class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">
+            <strong>{{fight.competitor_red.last_name}}</strong>
+            </br>
+            <small>({{fight.competitor_red.club.name}})</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</p>

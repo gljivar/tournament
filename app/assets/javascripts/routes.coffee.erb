@@ -6,7 +6,13 @@ thisApp = angular.module("TournamentClient", ['ngCookies', 'fights', 'fields', '
   #$locationProvider.hashPrefix('');
   $locationProvider.html5Mode true
   $routeProvider.when("/",
-    redirectTo: "/competitions"
+    redirectTo: "/status"
+  ).when("/repeater",
+    controller: RepeaterIndexCtrl
+    templateUrl: '<%= asset_path("repeater/index.html") %>' 
+  ).when("/status",
+    controller: StatusIndexCtrl
+    templateUrl: '<%= asset_path("status/index.html") %>' 
   ).when("/field_fights",
     controller: FieldFightsIndexCtrl
     templateUrl: '<%= asset_path("field_fights/index.html") %>'

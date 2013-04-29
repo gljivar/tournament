@@ -1,6 +1,12 @@
 Tournament::Application.routes.draw do
   match "field_fights" => 'field_fights#index', :as => :field_fights_path 
 
+  match "status" => 'field_fights#status', :as => :status_path 
+
+  match "repeater" => 'field_fights#repeater', :as => :repeater_path
+
+  match "repeater/:id" => 'field_fights#repeater', :as => :repeater_repeat_path
+  
   match "field_fights/:field_actual_id" => 'field_fights#field_fights', :as => :field_fights_fights_path 
 
   resources :fights
