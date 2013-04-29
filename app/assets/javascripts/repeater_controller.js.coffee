@@ -2,17 +2,22 @@
 root = global ? window
 
 RepeaterIndexCtrl = ($scope, Fight, Field, $location, $routeParams) ->
-  fields = Field.query() 
-  field_id = 0 
-  
-  setInterval (->
-    console.log(fields)
-    $scope.field_fights = Fight.repeater id : field_id
-    field_id = field_id + 1
-    field_id = field_id % fields.length
-  ), 5000
+  index = 0 
 
-  $scope.field_fights = Fight.field_fights() #query()
+  fields = Field.query(->
+   console.log(fields)
+   $scope.field = fields[index]
+   $scope.field_fights = Fight.repeater id : fields[index].id 
+  
+   setInterval (->
+     $scope.field = fields[index]
+     $scope.field_fights = Fight.repeater id : fields[index].id
+     index = index + 1
+     index = index % fields.length
+   ), 5000
+  )
+
+  #$scope.field_fights = Fight.repeater id : fields[index].id
 
   $scope.save = (fight, competitor_winner_id) ->
     fight.competitor_winner_id = competitor_winner_id
