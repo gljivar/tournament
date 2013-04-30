@@ -5,7 +5,6 @@ RepeaterIndexCtrl = ($scope, Fight, Field, $location, $routeParams) ->
   index = 0 
 
   fields = Field.query(->
-   console.log(fields)
    $scope.field = fields[index]
    $scope.field_fights = Fight.repeater id : fields[index].id 
   
