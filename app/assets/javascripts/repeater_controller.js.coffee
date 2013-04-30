@@ -11,7 +11,10 @@ RepeaterIndexCtrl = ($scope, Fight, Field, $location, $routeParams) ->
   
    setInterval (->
      $scope.field = fields[index]
-     $scope.field_fights = Fight.repeater id : fields[index].id
+     $scope.field_fights = Fight.repeater(
+       id : fields[index].id
+       timestamp: (new Date()).getTime()
+     )
      index = index + 1
      index = index % fields.length
    ), 5000
