@@ -4,11 +4,7 @@ root = global ? window
 RepeaterIndexCtrl = ($scope, Fight, Field, $location, $routeParams) ->
   index = 0 
 
-  fields = Field.query(->
-   $scope.field = fields[index]
-   $scope.field_fights = Fight.repeater id : fields[index].id 
-  
-   setInterval (->
+  getNextFieldFights = ->
      $scope.field = fields[index]
      $scope.field_fights = Fight.repeater(
        id : fields[index].id
@@ -16,6 +12,12 @@ RepeaterIndexCtrl = ($scope, Fight, Field, $location, $routeParams) ->
      )
      index = index + 1
      index = index % fields.length
+
+  fields = Field.query(->
+   getNextFieldFights()
+
+   setInterval (->
+     getNextFieldFights()
    ), 5000
   )
 
