@@ -6,17 +6,25 @@
     <div class="span9 margin-left-0">
       <div class="span2 well well-small margin-left-20" ng-repeat="fight in field_fights">
         <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
+        <span ng-show="fight.field_actual.name != fight.field_initial.name || fight.number_actual!= fight.number">
+        =>
+        <div class="badge badge-info">{{fight.field_actual.name}}-{{fight.number_actual}}</div>
+        </span>
         <div>
-          <div class="text-info" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_blue_id}">
+          <div ng-show="fight.competitor_blue_id != null" class="text-info" ng-class="{'icon-star-empty':fight.competitor_winner_id == fight.competitor_blue_id}">
             <strong>{{fight.competitor_blue.last_name}}</strong>
             </br>
             <small>({{fight.competitor_blue.club.name}})</small>
           </div>
-          <div class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">
+          <div ng-show="fight.competitor_blue_id == null" class="text-info">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
+
+          <div ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">
             <strong>{{fight.competitor_red.last_name}}</strong>
             </br>
             <small>({{fight.competitor_red.club.name}})</small>
           </div>
+          <div ng-show="fight.competitor_red_id == null" class="text-error">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div>
+
         </div>
       </div>
     </div>
