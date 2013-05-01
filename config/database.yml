@@ -25,10 +25,10 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: rukomet2009_04
+  database: x 
   pool: 5
-  username: rukomet2009_04
-  password: 9WMRj%cq5YO_
-  host: rukomet2009.home.pl
+  username: x
+  password: x 
+  host: x 
   timeout: 5000
 
