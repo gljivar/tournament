@@ -11,7 +11,7 @@ class FieldFightsController < ApplicationController
     @fields.each do |field|
       @field_actual_id = field.id
 
-      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
+      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
 
       @fights = @fights + @fights_current
 #      @fights.each do |fight|  
@@ -43,7 +43,7 @@ class FieldFightsController < ApplicationController
     @fields.each do |field|
       @field_actual_id = field.id
 
-      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
+      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
 
       @fights = @fights + @fights_current
     end
@@ -71,7 +71,7 @@ class FieldFightsController < ApplicationController
     @fights = []
     @field_actual_id = @field.id
 
-    @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
+    @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
 
     respond_to do |format|
       format.html # index.html.erb
