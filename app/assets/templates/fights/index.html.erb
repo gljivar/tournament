@@ -12,7 +12,6 @@
   <thead>
     <tr>
         <th>Initial number</th>
-        <th>Actual number</th>
         <th>Category</th>
         <th>Competitor blue</th>
         <th>Competitor red</th>
@@ -26,11 +25,12 @@
     <tr ng-repeat="fight in fights">
         <td>
           <a href="/fights/{{fight.id}}">
-            <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div> 
+          <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
           </a>
-        </td>
-        <td>
-          <div class="badge badge-info">{{fight.field_actual.name}}-{{fight.number_actual}}</div> 
+            <span ng-show="fight.field_actual.name != fight.field_initial.name || fight.number_actual!= fight.number">
+             =>
+            <div class="badge badge-info">{{fight.field_actual.name}}-{{fight.number_actual}}</div>
+            </span>
         </td>
         <td>
           {{fight.category.name}}
