@@ -5,7 +5,7 @@
       <div class="label label-info">{{field.name}}</div>
     </div>
     <div class="span9 margin-left-0">
-      <div class="span2 well well-small margin-left-20" ng-repeat="fight in field_fights | filter: { field_actual_id : field.id }">
+      <div class="span2 well well-small margin-left-10" ng-repeat="fight in field_fights | filter: { field_actual_id : field.id }">
         <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
         <div>
           <div class="text-info" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_blue_id}">
