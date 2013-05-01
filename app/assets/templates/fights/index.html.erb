@@ -1,11 +1,19 @@
 <h1>Fights</h1>
+
+<p>
+  <a href='/fights/new' class="btn btn-primary">
+    <i class="icon-plus"></i>New
+  </a>
+  <small>Press on Initial number to see details of the fight</small>
+</p>
+<br/>
+
 <table class="table table-striped">
   <thead>
     <tr>
-        <th>Number</th>
+        <th>Initial number</th>
+        <th>Actual number</th>
         <th>Category</th>
-        <th>Field initial</th>
-        <th>Field actual</th>
         <th>Competitor blue</th>
         <th>Competitor red</th>
         <th>Previous fight blue</th>
@@ -16,19 +24,16 @@
   </thead>
   <tbody>
     <tr ng-repeat="fight in fights">
-      <td>
-        <a href="/fights/{{fight.id}}">
-          {{fight.number}}
-        </a>
-      </td>
+        <td>
+          <a href="/fights/{{fight.id}}">
+            <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div> 
+          </a>
+        </td>
+        <td>
+          <div class="badge badge-info">{{fight.field_actual.name}}-{{fight.number_actual}}</div> 
+        </td>
         <td>
           {{fight.category.name}}
-        </td>
-        <td>
-          {{fight.field_initial.name}}
-        </td>
-        <td>
-          {{fight.field_actual.name}}
         </td>
         <td>
           {{fight.competitor_blue.last_name}}
@@ -37,10 +42,14 @@
           {{fight.competitor_red.last_name}}
         </td>
         <td>
-          {{fight.previous_fight_blue.number}}
+          <a href="/fights/{{fight.previous_fight_blue.id}}">
+            <div class="badge badge-info">{{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div> 
+          </a>
         </td>
         <td>
-          {{fight.previous_fight_red.number}}
+          <a href="/fights/{{fight.previous_fight_red.id}}">
+            <div class="badge badge-info">{{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div> 
+          </a>
         </td>
         <td>
           {{fight.competitor_winner.last_name}}

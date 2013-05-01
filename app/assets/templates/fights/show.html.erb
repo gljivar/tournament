@@ -1,23 +1,20 @@
-<h1>Fight</h1>
+<h1><span class="text-info" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_blue_id}">{{fight.competitor_blue.last_name}}</span>
+- 
+<span class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">{{fight.competitor_red.last_name}}</span></h1>
+
+<p> 
+  <b>Number initial</b>
+  <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
+</p>
 
 <p>
-  <b>Number</b><br>
-  {{fight.number}}
+  <b>Number actual</b><br>
+  <div class="badge badge-info">{{fight.field_actual.name}}-{{fight.number_actual}}</div>
 </p>
 
 <p>
   <b>Category</b><br>
   {{fight.category.name}}
-</p>
-
-<p>
-  <b>Field initial</b><br>
-  {{fight.field_initial.name}}
-</p>
-
-<p>
-  <b>Field actual</b><br>
-  {{fight.field_actual.name}}
 </p>
 
 <p>
@@ -37,12 +34,16 @@
 
 <p>
   <b>Previous fight blue</b><br>
-  {{fight.previous_fight_blue.number}}
+  <a class="a-white" href="/fights/{{fight.previous_fight_blue.id}}">
+    <div class="badge badge-info">{{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
+  </a>
 </p>
 
 <p>
   <b>Previous fight red</b><br>
-  {{fight.previous_fight_red.number}}
+  <a class="a-white" href="/fights/{{fight.previous_fight_red.id}}">
+    <div class="badge badge-info">{{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div>
+  </a>
 </p>
 
 <div class="form-actions">

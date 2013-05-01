@@ -1,5 +1,5 @@
 class Fight < ActiveRecord::Base
-  attr_accessible :number, :category_id, :field_initial_id, :field_actual_id, :competitor_blue_id, :competitor_red_id, :previous_fight_blue_id, :previous_fight_red_id, :competitor_winner_id
+  attr_accessible :number, :number_actual, :category_id, :field_initial_id, :field_actual_id, :competitor_blue_id, :competitor_red_id, :previous_fight_blue_id, :previous_fight_red_id, :competitor_winner_id
 
   belongs_to :category
 
@@ -19,15 +19,11 @@ class Fight < ActiveRecord::Base
     @fb = Fight.find(:first, :conditions => { :previous_fight_blue_id => id } )
     if @fb
       @fb.update_column(:competitor_blue_id, competitor_winner_id)
-#      @fb.competitor_blue_id = competitor_winner_id
-#      @fb.save
     end
 
     @fr = Fight.find(:first, :conditions => { :previous_fight_red_id => id } )
     if @fr
       @fr.update_column(:competitor_red_id, competitor_winner_id)
-#      @fr.competitor_red_id = competitor_winner_id
-#      @fr.save
     end
   end 
 
