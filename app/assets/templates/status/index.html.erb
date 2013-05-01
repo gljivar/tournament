@@ -21,7 +21,7 @@
           </div>
           <div ng-show="fight.competitor_blue_id == null" class="text-info">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
 
-          <div ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-star':fight.competitor_winner_id == fight.competitor_red_id}">
+          <div ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-star-empty':fight.competitor_winner_id == fight.competitor_red_id}">
             <strong>{{fight.competitor_red.last_name}}</strong>
             </br>
             <small>({{fight.competitor_red.club.name}})</small>
