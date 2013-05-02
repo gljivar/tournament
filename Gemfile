@@ -51,3 +51,5 @@ end
 # gem 'debugger'
 
 gem 'rb-readline'
+
+gem 'socketio-client'
