@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  before_filter :require_login
+#  protect_from_forgery
+  helper_method :current_user
 
   private
 
@@ -10,4 +12,24 @@ class ApplicationController < ActionController::Base
       form_authenticity_token == params[request_forgery_protection_token] ||
       form_authenticity_token == request.headers['X-XSRF-Token']
   end
+
+  # Authorization
+
+  def require_login
+    if current_user == nil
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render :json => [], :status => :unauthorized }
+      end
+      return false
+    end
+  end 
+
+  def current_user
+    if session[:user_id] != nil
+      return session[:user_id]
+    end
+    return nil
+  end
+
  end

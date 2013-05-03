@@ -1,8 +1,9 @@
 require 'SocketIO'
-#require '/home/rvm/.rvm/gems/ruby-1.9.3-p392/gems/socketio-client-0.0.3/lib/SocketIO.rb'
 
 class FightsController < ApplicationController
 respond_to :json
+skip_before_filter :require_login , :only => [:index, :show]
+
   # GET /fights
   # GET /fights.json
   def index

@@ -1,5 +1,7 @@
 class CountriesController < ApplicationController
 respond_to :json
+  skip_before_filter :require_login , :only => [:index, :show]
+
   # GET /countries
   # GET /countries.json
   def index

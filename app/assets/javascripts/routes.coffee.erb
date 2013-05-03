@@ -1,7 +1,7 @@
 root = global ? window
 angular = root.angular
 
-thisApp = angular.module("TournamentClient", ['ngCookies', 'fights', 'fields', 'competitions', 'competitors', 'categories', 'clubs', 'countries']).config(['$routeProvider', '$locationProvider' , 
+thisApp = angular.module("TournamentClient", ['tournament.directives', 'tournament.services', 'ngCookies', 'fights', 'fields', 'competitions', 'competitors', 'categories', 'clubs', 'countries']).config(['$routeProvider', '$locationProvider' , 
 ($routeProvider, $locationProvider) ->
   #$locationProvider.hashPrefix('');
   $locationProvider.html5Mode true
@@ -100,6 +100,9 @@ thisApp = angular.module("TournamentClient", ['ngCookies', 'fights', 'fields', '
   ).when("/fights/:id/edit",
     controller: FightsEditCtrl
     templateUrl: '<%= asset_path("fights/edit.html") %>'
+  ).when("/login",
+    controller: LoginCtrl
+    templateUrl: '<%= asset_path("sessions/login.html") %>'
   ).otherwise redirectTo: "/"
 ])
 

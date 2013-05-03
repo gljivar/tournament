@@ -1,5 +1,7 @@
 class CompetitorsController < ApplicationController
 respond_to :json
+skip_before_filter :require_login , :only => [:index, :show]
+
   # GET /competitors
   # GET /competitors.json
   def index

@@ -1,0 +1,28 @@
+<div ng-controller="LoginCtrl">
+  <div ng-show="showError">Username or password are unvalid</div>
+    <form novalidate class="login-form" ng-submit="submit()">
+      <fieldset>
+        <legend>Login</legend>
+        <div class="row">
+          <div class="control-group span4">
+            <labeli class="control-label">Username:</label>
+            <div class="controls">
+              <input type="text" class="text_field" ng-model="username" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="control-group span4">
+            <label class="control-label">Password:</label>
+            <div class="controls">
+              <input type="password" class="text_field" ng-model="password" />
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Log in</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

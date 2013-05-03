@@ -1,5 +1,7 @@
 class FieldsController < ApplicationController
 respond_to :json
+skip_before_filter :require_login , :only => [:index, :show]
+
   # GET /fields
   # GET /fields.json
   def index

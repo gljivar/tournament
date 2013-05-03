@@ -1,0 +1,30 @@
+listup.controller('NavigationCtrl', function ($scope, $http, $location, LogService, ListUp) {
+		$scope.ListUp = ListUp;
+		$scope.success = true;
+		$scope.goToView = function (view) {
+			$location.path(view);
+		};
+		$scope.logout = function () {
+			$scope.success = LogService.logout();
+			$location.path('/');
+		};
+		$scope.myPlaylists = function () {
+			$location.path('/user/' + ListUp.userId + '/playlists');
+		};
+
+		$scope.myProfile = function () {
+			$location.path('/users/' + ListUp.userId);
+		};
+	});
+
+
+<nav ng-controller="NavigationCtrl">
+			<button ng-click="goToView('/playlists')">ListUp</button>
+			<button ng-hide="ListUp.loggedIn" ng-click="goToView('/login')">Log in</button>
+			<button ng-hide="ListUp.loggedIn" ng-click="goToView('/signup')">Sign up</button>
+			<button ng-show="ListUp.loggedIn" ng-click="logout()">Log out</button>
+			<button ng-show="ListUp.loggedIn" ng-click="myPlaylists()">My playlists</button>
+			<button ng-show="ListUp.loggedIn" ng-click="myProfile()">My profile ({{ListUp.username}})</button>
+		</nav>
+
+Umjesto ListUp koristi TournamentGlobal

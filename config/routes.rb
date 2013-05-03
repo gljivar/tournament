@@ -1,4 +1,11 @@
 Tournament::Application.routes.draw do
+
+  match "sessions/login" => 'sessions#get_user', :as => 'get_user', :via => :get
+
+  match "sessions/login" => 'sessions#login', :as => 'login', :via => :post
+
+  match "sessions/logout" => 'sessions#logout', :as => 'logout', :via => :post
+
   match "field_fights" => 'field_fights#index', :as => :field_fights_path 
 
   match "status" => 'field_fights#status', :as => :status_path 
