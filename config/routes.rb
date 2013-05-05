@@ -16,6 +16,8 @@ Tournament::Application.routes.draw do
   
   match "field_fights/:field_actual_id" => 'field_fights#field_fights', :as => :field_fights_fights_path 
 
+  resources :users
+
   resources :fights
 
 

@@ -55,6 +55,7 @@
               <li><%= link_to 'Categories', categories_path  %></li>
               <li><%= link_to 'Clubs', clubs_path  %></li>
               <li><%= link_to 'Countries', countries_path  %></li>
+              <li><%= link_to 'Users', users_path, html_options = { :'ng-show' => "TournamentGlobal.loggedIn" }  %></li>
               <li><a ng-show="TournamentGlobal.loggedIn" ng-click="logout()">Log out</a></li>
               <li><a ng-hide="TournamentGlobal.loggedIn" ng-click="goToView('/login')">Log in</a></li>
             </ul>

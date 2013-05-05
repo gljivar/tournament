@@ -1,0 +1,20 @@
+<h1>User</h1>
+
+<p>
+  <b>Username</b><br>
+  {{user.username}}
+</p>
+
+<div class="form-actions">
+  <a ng-show="TournamentGlobal.loggedIn" href="/users/{{user.id}}/edit"
+    class="btn btn-primary"><i class="icon-edit"></i>
+    Edit User
+  </a>
+  <button ng-show="TournamentGlobal.loggedIn" ng-click="destroy()" class="btn btn-danger">
+    <i class="icon-trash"></i> Delete
+  </button>
+  <a href="/users" class="btn">
+    Back to users
+  </a>
+</div>
+

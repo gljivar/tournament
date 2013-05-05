@@ -1,0 +1,54 @@
+<form name="editUser">
+  <fieldset>
+    <legend>
+      Edit User
+    </legend>
+      <div class="control-group">
+        <label class="control-label">
+          Username
+        </label>
+        <div class="controls">
+            <input type="text"
+                   name="user[username]"
+                   ng-model="user.username"
+                   class="text_field"
+                   required>
+          <span ng-show="editUser.username.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">
+          Password 
+        </label>
+        <div class="controls">
+            <input type="password"
+                   name="user[password]"
+                   ng-model="user.password"
+                   class="text_field"
+                   required>
+          <span ng-show="editUser.password.$error.required"
+                class="help-inline">
+            Required
+          </span>
+        </div>
+      </div>
+    <div class="form-actions">
+      <button class="btn btn-success" ng-click="save()"
+        ng-disabled="isClean() || editUser.$invalid">
+        Save
+      </button>
+      <button ng-click="destroy()"
+              ng-show="user.id"
+              class="btn btn-danger">
+              <i class="icon-trash"></i>Delete
+      </button>
+      <a href="/users" class="btn">
+        Back to users
+      </a>
+    </div>
+  </fieldset>
+</form>
+
