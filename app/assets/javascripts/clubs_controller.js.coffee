@@ -11,7 +11,7 @@ ClubsIndexCtrl = ($scope, Club, TournamentGlobal, analytics) ->
       @club.destroy ->
         $scope.clubs = _.without($scope.clubs, original)
         
-ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal'];
+ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal', 'analytics'];
 
 ClubsCreateCtrl = ($scope, $location, Club) ->
   $scope.save = ->
