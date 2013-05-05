@@ -18,7 +18,9 @@ FightsIndexCtrl = ($scope, Fight, TournamentGlobal) ->
 FightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal'];
 
 FightsCreateCtrl = ($scope, $location, Fight, TournamentGlobal) ->
+  $scope.fight = new Fight()
   $scope.TournamentGlobal = TournamentGlobal
+
   $scope.save = ->
     Fight.save $scope.fight, (fight) ->
       $location.path "/fights/#{fight.id}/edit"
