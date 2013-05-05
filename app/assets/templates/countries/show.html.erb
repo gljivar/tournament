@@ -11,11 +11,11 @@
 </p>
 
 <div class="form-actions">
-  <a href="/countries/{{country.id}}/edit"
+  <a ng-show="TournamentGlobal.loggedIn" href="/countries/{{country.id}}/edit"
     class="btn btn-primary"><i class="icon-edit"></i>
     Edit Country
   </a>
-  <button ng-click="destroy()" class="btn btn-danger">
+  <button ng-show="TournamentGlobal.loggedIn" ng-click="destroy()" class="btn btn-danger">
     <i class="icon-trash"></i> Delete
   </button>
   <a href="/countries" class="btn">

@@ -2,9 +2,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-        <th>Name</th>
-        <th>Country code</th>
-      <th>Actions</th>
+      <th>Name</th>
+      <th>Country code</th>
+      <th ng-show="TournamentGlobal.loggedIn">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +17,7 @@
         <td>
           {{country.code3}}
         </td>
-      <td>
+      <td ng-show="TournamentGlobal.loggedIn">
         <a href="/countries/{{country.id}}/edit"
           class="btn btn-primary"><i class="icon-edit"></i>
           Edit
@@ -31,7 +31,7 @@
 </table>
 
 <p>
-  <a href='/countries/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/countries/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>

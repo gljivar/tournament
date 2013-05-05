@@ -1,7 +1,8 @@
 
 root = global ? window
 
-FightsIndexCtrl = ($scope, Fight) ->
+FightsIndexCtrl = ($scope, Fight, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.fights = Fight.query()
 
   $scope.destroy = ->
@@ -14,7 +15,7 @@ FightsIndexCtrl = ($scope, Fight) ->
     return (value.number < $scope.fight.number)
   return; 
         
-FightsIndexCtrl.$inject = ['$scope', 'Fight'];
+FightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal'];
 
 FightsCreateCtrl = ($scope, $location, Fight) ->
   $scope.save = ->
@@ -23,7 +24,9 @@ FightsCreateCtrl = ($scope, $location, Fight) ->
 
 FightsCreateCtrl.$inject = ['$scope', '$location', 'Fight'];
 
-FightsShowCtrl = ($scope, $location, $routeParams, Fight) ->
+FightsShowCtrl = ($scope, $location, $routeParams, Fight, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Fight.get
     id: $routeParams.id
   , (fight) ->
@@ -35,7 +38,7 @@ FightsShowCtrl = ($scope, $location, $routeParams, Fight) ->
       $scope.fight.destroy ->
         $location.path "/fights"
 
-FightsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Fight'];
+FightsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Fight', 'TournamentGlobal'];
 
 FightsEditCtrl = ($scope, $location, $routeParams, Fight) ->
   Fight.get
@@ -45,7 +48,7 @@ FightsEditCtrl = ($scope, $location, $routeParams, Fight) ->
     $scope.fight = new Fight(@original)
 
   $scope.isClean = ->
-    console.log "[FightsEditCtrl, $scope.isClean]"
+    #console.log "[FightsEditCtrl, $scope.isClean]"
     angular.equals @original, $scope.fight
 
   $scope.destroy = ->

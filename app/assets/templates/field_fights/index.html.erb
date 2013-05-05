@@ -17,8 +17,8 @@
         <div>
           <div ng-show="fight.competitor_blue_id != null" class="text-info" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_blue_id}">
             <strong>{{fight.competitor_blue.last_name}}</strong>
-            <button class="btn btn-primary pull-right"
-              ng-show="isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_blue_id)">  
+            <button class="btn btn-primary pull-right" 
+              ng-show="TournamentGlobal.loggedIn && isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_blue_id)">  
             Winner
             </button>
             </br>
@@ -29,7 +29,7 @@
           <div ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_red_id}">
             <strong>{{fight.competitor_red.last_name}}</strong>
             <button class="btn btn-danger pull-right"
-              ng-show="isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_red_id)">  
+              ng-show="TournamentGlobal.loggedIn && isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_red_id)">  
             Winner
             </button>
             </br>

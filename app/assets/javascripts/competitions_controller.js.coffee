@@ -1,7 +1,8 @@
 
 root = global ? window
 
-CompetitionsIndexCtrl = ($scope, Competition) ->
+CompetitionsIndexCtrl = ($scope, Competition, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.competitions = Competition.query()
 
   $scope.destroy = ->
@@ -10,7 +11,7 @@ CompetitionsIndexCtrl = ($scope, Competition) ->
       @competition.destroy ->
         $scope.competitions = _.without($scope.competitions, original)
         
-CompetitionsIndexCtrl.$inject = ['$scope', 'Competition'];
+CompetitionsIndexCtrl.$inject = ['$scope', 'Competition', 'TournamentGlobal'];
 
 CompetitionsCreateCtrl = ($scope, $location, Competition) ->
   $scope.save = ->
@@ -19,7 +20,9 @@ CompetitionsCreateCtrl = ($scope, $location, Competition) ->
 
 CompetitionsCreateCtrl.$inject = ['$scope', '$location', 'Competition'];
 
-CompetitionsShowCtrl = ($scope, $location, $routeParams, Competition) ->
+CompetitionsShowCtrl = ($scope, $location, $routeParams, Competition, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Competition.get
     id: $routeParams.id
   , (competition) ->
@@ -31,7 +34,7 @@ CompetitionsShowCtrl = ($scope, $location, $routeParams, Competition) ->
       $scope.competition.destroy ->
         $location.path "/competitions"
 
-CompetitionsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Competition'];
+CompetitionsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Competition', 'TournamentGlobal'];
 
 CompetitionsEditCtrl = ($scope, $location, $routeParams, Competition) ->
   Competition.get
