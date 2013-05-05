@@ -45,18 +45,18 @@
           <a class="brand" href="/">Tournament</a>
           <div class="container nav-collapse" ng-controller="NavigationCtrl">
             <ul class="nav">
-<li><%= link_to 'Repeater', :repeater_path %></li>
-<li><%= link_to 'Status', :status_path %></li>
-<li><%= link_to 'Field Fights', :field_fights_path %></li>
-<li><%= link_to 'Competitions', competitions_path  %></li>
-<li><%= link_to 'Fields', fields_path  %></li>
-<li><%= link_to 'Fights', fights_path  %></li>
-<li><%= link_to 'Competitors', competitors_path  %></li>
-<li><%= link_to 'Categories', categories_path  %></li>
-<li><%= link_to 'Clubs', clubs_path  %></li>
-<li><%= link_to 'Countries', countries_path  %></li>
-<li><button ng-hide="TournamentGlobal.loggedIn" ng-click="goToView('/login')">Log in</button></li>
-<li><button ng-show="TournamentGlobal.loggedIn" ng-click="logout()">Log out</button></li>
+              <li><%= link_to 'Repeater', :repeater_path %></li>
+              <li><%= link_to 'Status', :status_path %></li>
+              <li><%= link_to 'Field Fights', :field_fights_path %></li>
+              <li><%= link_to 'Competitions', competitions_path  %></li>
+              <li><%= link_to 'Fields', fields_path  %></li>
+              <li><%= link_to 'Fights', fights_path  %></li>
+              <li><%= link_to 'Competitors', competitors_path  %></li>
+              <li><%= link_to 'Categories', categories_path  %></li>
+              <li><%= link_to 'Clubs', clubs_path  %></li>
+              <li><%= link_to 'Countries', countries_path  %></li>
+              <li><a ng-show="TournamentGlobal.loggedIn" ng-click="logout()">Log out</a></li>
+              <li><a ng-hide="TournamentGlobal.loggedIn" ng-click="goToView('/login')">Log in</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

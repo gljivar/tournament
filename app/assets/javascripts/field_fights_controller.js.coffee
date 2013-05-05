@@ -1,7 +1,8 @@
 
 root = global ? window
 
-FieldFightsIndexCtrl = ($scope, Fight, $location, $routeParams) ->
+FieldFightsIndexCtrl = ($scope, Fight, $location, $routeParams, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.field_fights = Fight.field_fights() #query()
 
   $scope.save = (fight, competitor_winner_id) ->
@@ -16,7 +17,7 @@ FieldFightsIndexCtrl = ($scope, Fight, $location, $routeParams) ->
     current_fight = fight if current_fight == null
     return current_fight == fight
           
-FieldFightsIndexCtrl.$inject = ['$scope', 'Fight']; 
+FieldFightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal']; 
 
 # exports
 root.FieldFightsIndexCtrl  = FieldFightsIndexCtrl

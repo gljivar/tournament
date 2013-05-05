@@ -1,7 +1,7 @@
 <h1>Competitors</h1>
 
 <p>
-  <a href='/competitors/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/competitors/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>
@@ -10,12 +10,12 @@
 <table class="table table-striped">
   <thead>
     <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Lot number</th>
-        <th>Club</th>
-        <th>Category</th>
-      <th>Actions</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Lot number</th>
+      <th>Club</th>
+      <th>Category</th>
+      <th ng-show="TournamentGlobal.loggedIn">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -37,7 +37,7 @@
         <td>
           {{competitor.category.name}}
         </td>
-      <td>
+      <td ng-show="TournamentGlobal.loggedIn">
         <a href="/competitors/{{competitor.id}}/edit"
           class="btn btn-primary"><i class="icon-edit"></i>
           Edit
@@ -51,7 +51,7 @@
 </table>
 
 <p>
-  <a href='/competitors/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/competitors/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>

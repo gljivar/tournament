@@ -10,13 +10,13 @@ angular.module('tournament.services', ['ngResource'])
 					TournamentGlobal.userId = data.user_id;
 					TournamentGlobal.username = data.username;
 					TournamentGlobal.loggedIn = true;
-					console.log("Ulogiran korisnik");
+					//console.log("Ulogiran korisnik");
 				}).error(function (data, status, headers, config) {
 					TournamentGlobal.userId = undefined;
 					TournamentGlobal.username = undefined;
 					TournamentGlobal.loggedIn = false;
 					deferred.resolve(false);
-					console.log("Krivi podaci!");
+					//console.log("Krivi podaci!");
 				});
 				return deferred.promise;
 			},
@@ -25,7 +25,7 @@ angular.module('tournament.services', ['ngResource'])
 					TournamentGlobal.userId = undefined;
 					TournamentGlobal.username = undefined;
 					TournamentGlobal.loggedIn = false;
-					console.log('Odlogiran korisnik');
+					//console.log('Odlogiran korisnik');
 				});
 			}
 		};

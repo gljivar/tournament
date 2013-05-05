@@ -1,7 +1,7 @@
 <h1>Fights</h1>
 
 <p>
-  <a href='/fights/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/fights/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
   <small>Press on Initial number to see details of the fight</small>
@@ -18,7 +18,7 @@
         <th>Previous fight blue</th>
         <th>Previous fight red</th>
         <th>Competitor winner</th>
-      <th>Actions</th>
+      <th ng-show="TournamentGlobal.loggedIn">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -55,11 +55,11 @@
           {{fight.competitor_winner.last_name}}
         </td>
       <td>
-        <a href="/fights/{{fight.id}}/edit"
+        <a ng-show="TournamentGlobal.loggedIn" href="/fights/{{fight.id}}/edit"
           class="btn btn-primary"><i class="icon-edit"></i>
           Edit
         </a>
-        <button ng-click="destroy()" class="btn btn-danger">
+        <button ng-show="TournamentGlobal.loggedIn" ng-click="destroy()" class="btn btn-danger">
           <i class="icon-trash"></i> Delete
         </button>
       </td>
@@ -68,7 +68,7 @@
 </table>
 
 <p>
-  <a href='/fights/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/fights/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>

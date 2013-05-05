@@ -1,7 +1,8 @@
 
 root = global ? window
 
-ClubsIndexCtrl = ($scope, Club) ->
+ClubsIndexCtrl = ($scope, Club, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.clubs = Club.query()
 
   $scope.destroy = ->
@@ -10,7 +11,7 @@ ClubsIndexCtrl = ($scope, Club) ->
       @club.destroy ->
         $scope.clubs = _.without($scope.clubs, original)
         
-ClubsIndexCtrl.$inject = ['$scope', 'Club'];
+ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal'];
 
 ClubsCreateCtrl = ($scope, $location, Club) ->
   $scope.save = ->
@@ -19,7 +20,8 @@ ClubsCreateCtrl = ($scope, $location, Club) ->
 
 ClubsCreateCtrl.$inject = ['$scope', '$location', 'Club'];
 
-ClubsShowCtrl = ($scope, $location, $routeParams, Club) ->
+ClubsShowCtrl = ($scope, $location, $routeParams, Club, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   Club.get
     id: $routeParams.id
   , (club) ->
@@ -31,7 +33,7 @@ ClubsShowCtrl = ($scope, $location, $routeParams, Club) ->
       $scope.club.destroy ->
         $location.path "/clubs"
 
-ClubsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Club'];
+ClubsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Club', 'TournamentGlobal'];
 
 ClubsEditCtrl = ($scope, $location, $routeParams, Club) ->
   Club.get

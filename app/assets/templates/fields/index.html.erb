@@ -4,7 +4,7 @@
     <tr>
         <th>Name</th>
         <th>Competition</th>
-      <th>Actions</th>
+      <th ng-show="TournamentGlobal.loggedIn">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +17,7 @@
         <td>
           {{field.competition.name}}
         </td>
-      <td>
+      <td ng-show="TournamentGlobal.loggedIn">
         <a href="/fields/{{field.id}}/edit"
           class="btn btn-primary"><i class="icon-edit"></i>
           Edit
@@ -31,7 +31,7 @@
 </table>
 
 <p>
-  <a href='/fields/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/fields/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>

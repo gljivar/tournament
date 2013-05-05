@@ -5,7 +5,7 @@
         <th>Name</th>
         <th>Date start</th>
         <th>Date end</th>
-      <th>Actions</th>
+      <th ng-show="TournamentGlobal.loggedIn">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -22,11 +22,11 @@
           {{competition.date_end}}
         </td>
       <td>
-        <a href="/competitions/{{competition.id}}/edit"
+        <a ng-show="TournamentGlobal.loggedIn" href="/competitions/{{competition.id}}/edit"
           class="btn btn-primary"><i class="icon-edit"></i>
           Edit
         </a>
-        <button ng-click="destroy()" class="btn btn-danger">
+        <button ng-show="TournamentGlobal.loggedIn" ng-click="destroy()" class="btn btn-danger">
           <i class="icon-trash"></i> Delete
         </button>
       </td>
@@ -35,7 +35,7 @@
 </table>
 
 <p>
-  <a href='/competitions/new' class="btn btn-primary">
+  <a ng-show="TournamentGlobal.loggedIn" href='/competitions/new' class="btn btn-primary">
     <i class="icon-plus"></i>New
   </a>
 </p>

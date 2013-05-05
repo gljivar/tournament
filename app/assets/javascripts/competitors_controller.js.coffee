@@ -1,7 +1,8 @@
 
 root = global ? window
 
-CompetitorsIndexCtrl = ($scope, Competitor) ->
+CompetitorsIndexCtrl = ($scope, Competitor, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.competitors = Competitor.query()
 
   $scope.isPossibleWinner = (value) ->
@@ -13,7 +14,7 @@ CompetitorsIndexCtrl = ($scope, Competitor) ->
       @competitor.destroy ->
         $scope.competitors = _.without($scope.competitors, original)
         
-CompetitorsIndexCtrl.$inject = ['$scope', 'Competitor'];
+CompetitorsIndexCtrl.$inject = ['$scope', 'Competitor', 'TournamentGlobal'];
 
 CompetitorsCreateCtrl = ($scope, $location, Competitor) ->
   $scope.save = ->
@@ -22,7 +23,9 @@ CompetitorsCreateCtrl = ($scope, $location, Competitor) ->
 
 CompetitorsCreateCtrl.$inject = ['$scope', '$location', 'Competitor'];
 
-CompetitorsShowCtrl = ($scope, $location, $routeParams, Competitor) ->
+CompetitorsShowCtrl = ($scope, $location, $routeParams, Competitor, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Competitor.get
     id: $routeParams.id
   , (competitor) ->
@@ -34,7 +37,7 @@ CompetitorsShowCtrl = ($scope, $location, $routeParams, Competitor) ->
       $scope.competitor.destroy ->
         $location.path "/competitors"
 
-CompetitorsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Competitor'];
+CompetitorsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Competitor', 'TournamentGlobal'];
 
 CompetitorsEditCtrl = ($scope, $location, $routeParams, Competitor) ->
   Competitor.get

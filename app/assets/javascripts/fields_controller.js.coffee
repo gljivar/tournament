@@ -1,7 +1,8 @@
 
 root = global ? window
 
-FieldsIndexCtrl = ($scope, Field) ->
+FieldsIndexCtrl = ($scope, Field, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.fields = Field.query()
 
   $scope.destroy = ->
@@ -10,7 +11,7 @@ FieldsIndexCtrl = ($scope, Field) ->
       @field.destroy ->
         $scope.fields = _.without($scope.fields, original)
         
-FieldsIndexCtrl.$inject = ['$scope', 'Field'];
+FieldsIndexCtrl.$inject = ['$scope', 'Field', 'TournamentGlobal'];
 
 FieldsCreateCtrl = ($scope, $location, Field) ->
   $scope.save = ->
@@ -19,7 +20,9 @@ FieldsCreateCtrl = ($scope, $location, Field) ->
 
 FieldsCreateCtrl.$inject = ['$scope', '$location', 'Field'];
 
-FieldsShowCtrl = ($scope, $location, $routeParams, Field) ->
+FieldsShowCtrl = ($scope, $location, $routeParams, Field, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Field.get
     id: $routeParams.id
   , (field) ->
@@ -31,7 +34,7 @@ FieldsShowCtrl = ($scope, $location, $routeParams, Field) ->
       $scope.field.destroy ->
         $location.path "/fields"
 
-FieldsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Field'];
+FieldsShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Field', 'TournamentGlobal'];
 
 FieldsEditCtrl = ($scope, $location, $routeParams, Field) ->
   Field.get

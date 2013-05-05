@@ -1,7 +1,8 @@
 
 root = global ? window
 
-CategoriesIndexCtrl = ($scope, Category) ->
+CategoriesIndexCtrl = ($scope, Category, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.categories = Category.query()
 
   $scope.destroy = ->
@@ -10,7 +11,7 @@ CategoriesIndexCtrl = ($scope, Category) ->
       @category.destroy ->
         $scope.categories = _.without($scope.categories, original)
         
-CategoriesIndexCtrl.$inject = ['$scope', 'Category'];
+CategoriesIndexCtrl.$inject = ['$scope', 'Category', 'TournamentGlobal'];
 
 CategoriesCreateCtrl = ($scope, $location, Category) ->
   $scope.save = ->
@@ -19,7 +20,9 @@ CategoriesCreateCtrl = ($scope, $location, Category) ->
 
 CategoriesCreateCtrl.$inject = ['$scope', '$location', 'Category'];
 
-CategoriesShowCtrl = ($scope, $location, $routeParams, Category) ->
+CategoriesShowCtrl = ($scope, $location, $routeParams, Category, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Category.get
     id: $routeParams.id
   , (category) ->
@@ -31,7 +34,7 @@ CategoriesShowCtrl = ($scope, $location, $routeParams, Category) ->
       $scope.category.destroy ->
         $location.path "/categories"
 
-CategoriesShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Category'];
+CategoriesShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Category', 'TournamentGlobal'];
 
 CategoriesEditCtrl = ($scope, $location, $routeParams, Category) ->
   Category.get

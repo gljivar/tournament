@@ -1,7 +1,8 @@
 
 root = global ? window
 
-CountriesIndexCtrl = ($scope, Country) ->
+CountriesIndexCtrl = ($scope, Country, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.countries = Country.query()
 
   $scope.destroy = ->
@@ -10,16 +11,19 @@ CountriesIndexCtrl = ($scope, Country) ->
       @country.destroy ->
         $scope.countries = _.without($scope.countries, original)
         
-CountriesIndexCtrl.$inject = ['$scope', 'Country'];
+CountriesIndexCtrl.$inject = ['$scope', 'Country', 'TournamentGlobal'];
 
-CountriesCreateCtrl = ($scope, $location, Country) ->
+CountriesCreateCtrl = ($scope, $location, Country, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.save = ->
     Country.save $scope.country, (country) ->
       $location.path "/countries/#{country.id}/edit"
 
-CountriesCreateCtrl.$inject = ['$scope', '$location', 'Country'];
+CountriesCreateCtrl.$inject = ['$scope', '$location', 'Country', 'TournamentGlobal'];
 
-CountriesShowCtrl = ($scope, $location, $routeParams, Country) ->
+CountriesShowCtrl = ($scope, $location, $routeParams, Country, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Country.get
     id: $routeParams.id
   , (country) ->
@@ -31,9 +35,11 @@ CountriesShowCtrl = ($scope, $location, $routeParams, Country) ->
       $scope.country.destroy ->
         $location.path "/countries"
 
-CountriesShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Country'];
+CountriesShowCtrl.$inject = ['$scope', '$location', '$routeParams', 'Country', 'TournamentGlobal'];
 
-CountriesEditCtrl = ($scope, $location, $routeParams, Country) ->
+CountriesEditCtrl = ($scope, $location, $routeParams, Country, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
+
   Country.get
     id: $routeParams.id
   , (country) ->
@@ -53,7 +59,7 @@ CountriesEditCtrl = ($scope, $location, $routeParams, Country) ->
     Country.update $scope.country, (country) ->
       $location.path "/countries"
 
-CountriesEditCtrl.$inject = ['$scope', '$location', '$routeParams', 'Country'];
+CountriesEditCtrl.$inject = ['$scope', '$location', '$routeParams', 'Country', 'TournamentGlobal'];
 
 # exports
 root.CountriesIndexCtrl  = CountriesIndexCtrl
