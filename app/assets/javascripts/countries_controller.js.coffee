@@ -1,7 +1,7 @@
 
 root = global ? window
 
-CountriesIndexCtrl = ($scope, Country, TournamentGlobal) ->
+CountriesIndexCtrl = ($scope, Country, TournamentGlobal, analytics) ->
   $scope.TournamentGlobal = TournamentGlobal
   $scope.countries = Country.query()
 

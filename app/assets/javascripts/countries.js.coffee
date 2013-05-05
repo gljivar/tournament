@@ -1,6 +1,6 @@
 root = global ? window
 
-angular.module("countries", ["ngResource"]).factory "Country", ['$resource', ($resource) ->
+angular.module("countries", ["ngResource", 'analytics']).factory "Country", ['$resource', ($resource) ->
   Country = $resource("/countries/:id",
     id: "@id"
   ,
