@@ -34,7 +34,7 @@ angular.module('tournament.services', ['ngResource'])
 		var TournamentGlobal = {
 			userId: undefined,
 			username: undefined,
-			loggedIn: true
+			loggedIn: false 
 		};
 		
 		$http.get('/sessions/login').success(function (data, status, headers, config) {
