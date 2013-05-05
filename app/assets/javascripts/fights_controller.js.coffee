@@ -17,12 +17,13 @@ FightsIndexCtrl = ($scope, Fight, TournamentGlobal) ->
         
 FightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal'];
 
-FightsCreateCtrl = ($scope, $location, Fight) ->
+FightsCreateCtrl = ($scope, $location, Fight, TournamentGlobal) ->
+  $scope.TournamentGlobal = TournamentGlobal
   $scope.save = ->
     Fight.save $scope.fight, (fight) ->
       $location.path "/fights/#{fight.id}/edit"
 
-FightsCreateCtrl.$inject = ['$scope', '$location', 'Fight'];
+FightsCreateCtrl.$inject = ['$scope', '$location', 'Fight', 'TournamentGlobal'];
 
 FightsShowCtrl = ($scope, $location, $routeParams, Fight, TournamentGlobal) ->
   $scope.TournamentGlobal = TournamentGlobal
