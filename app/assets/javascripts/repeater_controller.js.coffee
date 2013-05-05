@@ -1,8 +1,13 @@
 
 root = global ? window
 
-RepeaterIndexCtrl = ($scope, Fight, Field, TournamentGlobal) ->
+RepeaterIndexCtrl = ($scope, Fight, Field) ->
   index = 0 
+  repeaterId = undefined
+  
+  $scope.$on('$destroy', ->
+   clearInterval(repeaterId) if repeaterId isnt `undefined`
+  )
 
   getNextFieldFights = ->
      $scope.field = fields[index]
@@ -16,8 +21,7 @@ RepeaterIndexCtrl = ($scope, Fight, Field, TournamentGlobal) ->
   fields = Field.query(->
    getNextFieldFights()
 
-   clearInterval(TournamentGlobal.repeaterId) if TournamentGlobal.repeaterId isnt `undefined`
-   TournamentGlobal.repeaterId = setInterval (->
+   repeaterId = setInterval (->
      getNextFieldFights()
    ), 5000
   )
@@ -36,7 +40,7 @@ RepeaterIndexCtrl = ($scope, Fight, Field, TournamentGlobal) ->
     current_fight = fight if current_fight == null
     return current_fight == fight
           
-RepeaterIndexCtrl.$inject = ['$scope', 'Fight', 'Field', 'TournamentGlobal']; 
+RepeaterIndexCtrl.$inject = ['$scope', 'Fight', 'Field']; 
 
 # exports
 root.RepeaterIndexCtrl  = RepeaterIndexCtrl
