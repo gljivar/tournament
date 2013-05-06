@@ -1,7 +1,7 @@
 
 root = global ? window
 
-ClubsIndexCtrl = ($scope, Club, TournamentGlobal, analytics) ->
+ClubsIndexCtrl = ($scope, Club, TournamentGlobal) ->
   $scope.TournamentGlobal = TournamentGlobal
   $scope.clubs = Club.query()
 
@@ -11,7 +11,7 @@ ClubsIndexCtrl = ($scope, Club, TournamentGlobal, analytics) ->
       @club.destroy ->
         $scope.clubs = _.without($scope.clubs, original)
         
-ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal', 'analytics'];
+ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal'];
 
 ClubsCreateCtrl = ($scope, $location, Club) ->
   $scope.save = ->

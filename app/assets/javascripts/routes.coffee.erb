@@ -1,7 +1,7 @@
 root = global ? window
 angular = root.angular
 
-thisApp = angular.module("TournamentClient", ['tournament.directives', 'tournament.services', 'ngCookies', 'fights', 'fields', 'competitions', 'competitors', 'categories', 'clubs', 'countries', 'users']).config(['$routeProvider', '$locationProvider' , 
+thisApp = angular.module("TournamentClient", ['tournament.directives', 'tournament.services', 'ngCookies', 'fights', 'fields', 'competitions', 'competitors', 'categories', 'clubs', 'countries', 'users', 'analytics']).config(['$routeProvider', '$locationProvider' , 
 ($routeProvider, $locationProvider) ->
   #$locationProvider.hashPrefix('');
   $locationProvider.html5Mode true

@@ -1,6 +1,6 @@
 root = global ? window
 
-angular.module("clubs", ["ngResource", 'analytics']).factory "Club", ['$resource', ($resource) ->
+angular.module("clubs", ["ngResource"]).factory "Club", ['$resource', ($resource) ->
   Club = $resource("/clubs/:id",
     id: "@id"
   ,
