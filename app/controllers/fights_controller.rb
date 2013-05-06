@@ -66,24 +66,13 @@ skip_before_filter :require_login , :only => [:index, :show]
     @fight = Fight.find(params[:id])
     
     secret = '9f8urg90$u3#92u8rh_gu(rfhi8rj*fih'
-    #client = SocketIO.connect("http://localhost:8190") do
-      #before_start do
-        #on_message {|message| puts "incoming message: #{message}"}
-        #on_disconnect {puts "I GOT A TDISCONNECT"}
-      #end
-
-    #  after_start do
-        #emit('message', { op: 'subscribe', channel: 'orderbook_BUH3' })
-        #obje = { :secret => secret, :action => 'fight', :info => { :status => 'changed' } }
-        #emit("tournament-rubyii","i objei" )
-        #disconnect 
-    #  end
-    #  on_json_message do |message| 
-       # puts JSON.parse(message)
-    #  end
-    #  on_disconnect do
-    #  end
-    #end
+    client = SocketIO.connect("http://localhost:8190") do
+      after_start do
+        obj = { :secret => secret, :action => 'fight', :info => { :status => 'changed' } }
+        emit("tournament-ruby", obj)
+        disconnect 
+      end
+    end
 
     respond_to do |format|
       if @fight.update_attributes(params[:fight])
