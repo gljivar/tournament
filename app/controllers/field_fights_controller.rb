@@ -18,17 +18,11 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
         UNION ALL SELECT next.* FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?) AS next) AS result", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
 
       @fights = @fights + @fights_current
-#      @fights.each do |fight|  
-#        field.fights_actual.push(fight) 
-#      end
     end
 
     respond_to do |format|
       format.html # index.html.erb
-      
-#      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:number] }, :previous_fight_red => { :only => [:number] } } ) }
-
-      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
+      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name, :lot_number] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
     end
 
   end
@@ -58,7 +52,7 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
+      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name, :lot_number] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
 
     end
   end 
@@ -88,7 +82,7 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @fights_current.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) } 
+      format.json { render json: @fights_current.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name, :lot_number], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name, :lot_number] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) } 
 
     end
   end

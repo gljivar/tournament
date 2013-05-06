@@ -16,7 +16,7 @@
 
         <div>
           <div ng-show="fight.competitor_blue_id != null" class="text-info" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_blue_id}">
-            <strong>{{fight.competitor_blue.last_name}}</strong>
+            <strong>{{fight.competitor_blue.lot_number}} - {{fight.competitor_blue.last_name}}</strong>
             <button class="btn btn-primary pull-right" 
               ng-show="TournamentGlobal.loggedIn && isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_blue_id)">  
             Winner
@@ -27,7 +27,7 @@
           <div ng-show="fight.competitor_blue_id == null" class="text-info">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
 
           <div ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_red_id}">
-            <strong>{{fight.competitor_red.last_name}}</strong>
+            <strong>{{fight.competitor_red.lot_number}} - {{fight.competitor_red.last_name}}</strong>
             <button class="btn btn-danger pull-right"
               ng-show="TournamentGlobal.loggedIn && isCurrentFight(fight, (field_fights | filter: { field_actual_id : field.id } | orderBy:number))" ng-click="save(fight, fight.competitor_red_id)">  
             Winner
