@@ -32,7 +32,7 @@
           </span>
           <a class="brand" href="/">Tournament</a>
           <div class="container nav-collapse" ng-controller="NavigationCtrl">
-            <ul class="nav">
+            <ul class="nav" ng-click="collapseNav()">
               <li><%= link_to 'Repeater', :repeater_path %></li>
               <li><%= link_to 'Status', :status_path %></li>
               <li><%= link_to 'Field Fights', :field_fights_path %></li>
