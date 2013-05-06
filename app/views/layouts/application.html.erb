@@ -35,17 +35,25 @@
             <ul class="nav" ng-click="collapseNav()">
               <li><%= link_to 'Repeater', :repeater_path %></li>
               <li><%= link_to 'Status', :status_path %></li>
-              <li><%= link_to 'Field Fights', :field_fights_path %></li>
-              <li><%= link_to 'Competitions', competitions_path  %></li>
-              <li><%= link_to 'Fields', fields_path  %></li>
+              <li><%= link_to 'Field Fights', :field_fights_path, html_options = { :'ng-show' => "TournamentGlobal.loggedIn" } %></li>
               <li><%= link_to 'Fights', fights_path  %></li>
               <li><%= link_to 'Competitors', competitors_path  %></li>
               <li><%= link_to 'Categories', categories_path  %></li>
               <li><%= link_to 'Clubs', clubs_path  %></li>
-              <li><%= link_to 'Countries', countries_path  %></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+                  Other
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Competitions', competitions_path  %></li>
+                  <li><%= link_to 'Fields', fields_path  %></li>
+                  <li><%= link_to 'Countries', countries_path  %></li>
+                </ul>
+              </li>
               <li><%= link_to 'Users', users_path, html_options = { :'ng-show' => "TournamentGlobal.loggedIn" }  %></li>
-              <li><a ng-show="TournamentGlobal.loggedIn" ng-click="logout()">Log out</a></li>
-              <li><a ng-hide="TournamentGlobal.loggedIn" ng-click="goToView('/login')">Log in</a></li>
+              <li><a class="pull-right" ng-show="TournamentGlobal.loggedIn" ng-click="logout()">Log out</a></li>
+              <li><a class="pull-right" ng-hide="TournamentGlobal.loggedIn" ng-click="goToView('/login')">Log in</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
