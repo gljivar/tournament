@@ -13,9 +13,9 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
     @fields.each do |field|
       @field_actual_id = field.id
 
-      @fights_current = Fight.find_by_sql ["SELECT * FROM
+      @fights_current = Fight.find_by_sql ["SELECT result.* FROM
         (SELECT prev.* FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) AS prev
-        UNION ALL SELECT next.* FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?) AS next)", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
+        UNION ALL SELECT next.* FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?) AS next) AS result", @field_actual_id, @limit_previous, @field_actual_id, @limit_next] 
 
       @fights = @fights + @fights_current
 #      @fights.each do |fight|  
@@ -45,17 +45,20 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
     @fields.each do |field|
       @field_actual_id = field.id
 
-      @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
+      @fights_current = Fight.find_by_sql ["SELECT result.* FROM 
+       (SELECT prev.* FROM 
+        (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) as prev
+         UNION ALL
+        SELECT next.* FROM
+        (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?) AS next
+       ) as result", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
 
       @fights = @fights + @fights_current
     end
 
     respond_to do |format|
       format.html # index.html.erb
-
-#      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:number] }, :previous_fight_red => { :only => [:number] } } ) }
-
-       format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
+      format.json { render json: @fights.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) }
 
     end
   end 
@@ -75,13 +78,16 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
     @fights = []
     @field_actual_id = @field.id
 
-    @fights_current = Fight.find_by_sql ["SELECT * FROM (SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) UNION ALL SELECT * FROM (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?))", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
+    @fights_current = Fight.find_by_sql ["SELECT result.* FROM
+     (SELECT prev.* FROM
+      (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NOT NULL ORDER BY number_actual DESC LIMIT ?) AS prev
+      UNION ALL
+      SELECT next.* FROM
+      (SELECT * FROM fights WHERE field_actual_id = ? AND competitor_winner_id IS NULL ORDER BY number_actual LIMIT ?) AS next
+     ) AS result", @field_actual_id, @limit_previous, @field_actual_id, @limit_next]
 
     respond_to do |format|
       format.html # index.html.erb
-
-     # format.json { render json: @fights_current.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:number] }, :previous_fight_red => { :only => [:number] } } ) }
-
       format.json { render json: @fights_current.to_json( :include => { :field_initial => { :only => [:name] }, :field_actual => { :only => [:name] }, :category => { :only => [:name] }, :competitor_blue => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_red => { :only => [:last_name], :include => { :club => { :only => [:name] } } }, :competitor_winner => { :only => [:last_name] }, :previous_fight_blue => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } }, :previous_fight_red => { :only => [:id, :number], :include => { :field_initial => { :only => [:name] } } } } ) } 
 
     end
