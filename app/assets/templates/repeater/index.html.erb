@@ -1,9 +1,9 @@
 <h1>Fights Repeater</h1>
   <div class="well well-small row margin-left-0"> 
-    <div class="span9 margin-left-0">
+    <div class="span12 margin-left-0">
       <div class="label label-info">{{field.name}}</div>
     </div>
-    <div class="span9 margin-left-0">
+    <div class="span12 margin-left-0">
       <div class="span2 well well-small margin-left-20" ng-repeat="fight in field_fights">
         <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
         <span ng-show="fight.field_actual.name != fight.field_initial.name || fight.number_actual!= fight.number">

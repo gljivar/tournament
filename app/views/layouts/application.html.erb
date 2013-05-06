@@ -54,11 +54,11 @@
 
     <div class="container">
       <div class="content">
-        <div class="row">
+        <div class="row" ng-controller="RowCtrl">
           <!-- templates load here -->
-          <div ng-view class="span9"></div>
+          <div ng-view ng-class="viewClass"></div>
           <!-- templates load here -->
-            <div class="span3">
+            <div ng-class="sidebarClass" ng-hide="sidebarHide">
               <div class="well sidebar-nav">
                 <h3>Sidebar</h3>
                 <ul class="nav nav-list">
