@@ -1,25 +1,28 @@
 class SessionsController < ApplicationController
 respond_to :json
 skip_before_filter :require_login 
-
-  def get_user
-   # if current_user
-   #   User = 
-   #E   user_j = { :user_id => user.id, :username => user.username, :logged_in => true }
-   # else
-   #   user_j = { :user_id => user.id, :username => user.username, :logged_in => true }
-   # end
-
-   # respond_to do |format|
-   #   format.html
-   #   format.json { render :json => user_j.to_json }
-   # end
   
-    u = { :user_id => 1, :username => 'm', :logged_in => true }
+  def get_user
+    self.response.headers['Last-Modified'] = Time.now.ctime.to_s
+
+    if current_user
+      user = User.find(session[:user_id])
+      user_j = { :user_id => user.id, :username => user.username, :logged_in => true }
+    else
+      user_j = { :user_id => 'undefined', :username => 'undefined', :logged_in => false }
+    end
+
     respond_to do |format|
       format.html
-      format.json { render :json => u.to_json }
+      format.json { render :json => user_j.to_json }
     end
+
+  
+   # u = { :user_id => 1, :username => 'm', :logged_in => true }
+   # respond_to do |format|
+   #   format.html
+   #   format.json { render :json => u.to_json }
+   # end
   end
 
   def login
