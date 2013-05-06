@@ -2,14 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@media (max-width: 767px) {
+  .margin-left-20,
+  .margin-left-10 {
+    width: auto;
+  }
+}
+
 .margin-left-20 {
   margin-left: 20px;
-  width: auto;
 }
 
 .margin-left-10 {
   margin-left: 10px;
-  width: auto;
 }
 
 .margin-left-0 {
