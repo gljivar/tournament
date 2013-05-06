@@ -1,7 +1,10 @@
-<h1><span ng-show="fight.competitor_blue_id != null" class="text-info" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_blue_id}">{{fight.competitor_blue.last_name}}</span>
+<h1>
+<span ng-show="fight.competitor_blue_id != null" class="text-info" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_blue_id}">
+{{fight.competitor_blue.last_name}}</span>
 <span ng-show="fight.competitor_blue_id == null" class="text-info">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</span>
-- 
-<span ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_red_id}">{{fight.competitor_red.last_name}}</span>
+-
+<span ng-show="fight.competitor_red_id != null" class="text-error" ng-class="{'icon-trophy':fight.competitor_winner_id == fight.competitor_red_id}">
+{{fight.competitor_red.last_name}}</span>
 <span ng-show="fight.competitor_red_id == null" class="text-error">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</span>
 </h1>
 
@@ -21,13 +24,13 @@
 
 <p>
   <b>Competitor blue</b><br>
-  {{fight.competitor_blue.last_name}}
+  {{fight.competitor_blue.lot_number}} - {{fight.competitor_blue.last_name}}
   <span ng-show="fight.competitor_blue_id == null">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</span>
 </p>
 
 <p>
   <b>Competitor red</b><br>
-  {{fight.competitor_red.last_name}}
+  {{fight.competitor_red.lot_number}} - {{fight.competitor_red.last_name}}
   <span ng-show="fight.competitor_red_id == null">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</span>
 </p>
 
