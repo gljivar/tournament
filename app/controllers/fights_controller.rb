@@ -66,13 +66,16 @@ skip_before_filter :require_login , :only => [:index, :show]
     @fight = Fight.find(params[:id])
     
     secret = '9f8urg90$u3#92u8rh_gu(rfhi8rj*fih'
-    client = SocketIO.connect("http://localhost:8190") do
-      after_start do
-        obj = { :secret => secret, :action => 'fight', :info => { :status => 'changed' } }
-        emit("tournament-ruby", obj)
-        disconnect 
-      end
-    end
+	begin
+		client = SocketIO.connect("http://localhost:8190") do
+		  after_start do
+			obj = { :secret => secret, :action => 'fight', :info => { :status => 'changed' } }
+			emit("tournament-ruby", obj)
+			disconnect 
+		  end
+		end
+	rescue
+	end
 
     respond_to do |format|
       if @fight.update_attributes(params[:fight])
