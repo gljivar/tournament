@@ -14,6 +14,7 @@ CountriesIndexCtrl = ($scope, Country, TournamentGlobal) ->
 CountriesIndexCtrl.$inject = ['$scope', 'Country', 'TournamentGlobal'];
 
 CountriesCreateCtrl = ($scope, $location, Country, TournamentGlobal) ->
+  $scope.country = new Country()
   $scope.TournamentGlobal = TournamentGlobal
   $scope.save = ->
     Country.save $scope.country, (country) ->

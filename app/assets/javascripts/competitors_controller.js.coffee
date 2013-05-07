@@ -17,6 +17,7 @@ CompetitorsIndexCtrl = ($scope, Competitor, TournamentGlobal) ->
 CompetitorsIndexCtrl.$inject = ['$scope', 'Competitor', 'TournamentGlobal'];
 
 CompetitorsCreateCtrl = ($scope, $location, Competitor) ->
+  $scope.competitor = new Competitor()
   $scope.save = ->
     Competitor.save $scope.competitor, (competitor) ->
       $location.path "/competitors/#{competitor.id}/edit"
