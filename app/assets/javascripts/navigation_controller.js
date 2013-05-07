@@ -18,10 +18,12 @@ root.NavigationCtrl = function ($scope, $http, $location, LogService, Tournament
 			mainMenuHeight = $('.navbar .nav-collapse').height(),
 			isOpen = $parent.hasClass('open');
 		
-		if (!isOpen) {
-			$('.navbar .nav-collapse').height(mainMenuHeight+menuHeight);
-		} else {
-			$('.navbar .nav-collapse').height(mainMenuHeight-menuHeight-2); //TODO: remove HACK!
+		if (mainMenuHeight > 40) { //TOOD: remove this master HACK!
+			if (!isOpen) {
+				$('.navbar .nav-collapse').height(mainMenuHeight+menuHeight);
+			} else {
+				$('.navbar .nav-collapse').height(mainMenuHeight-menuHeight-2); //TODO: remove HACK!
+			}
 		}
 	});
 	
