@@ -12,7 +12,7 @@ FightsIndexCtrl = ($scope, Fight, TournamentGlobal) ->
         $scope.fights = _.without($scope.fights, original)
 
   $scope.isPossiblePrevious = (value) ->
-    return (value.number < $scope.fight.number)
+    return (value.number < $scope.fight.number && value.category_id == $scope.fight.category_id )
   return; 
         
 FightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal'];
