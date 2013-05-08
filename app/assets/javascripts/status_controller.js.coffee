@@ -2,6 +2,12 @@
 root = global ? window
 
 StatusIndexCtrl = ($scope, Fight, $location, $routeParams) ->
+  socket = io.connect("/",
+    resource: "stream/socket.io"
+  )
+  socket.on "fight", (data) ->
+    console.log data
+
   $scope.field_fights = Fight.field_fights() #query()
 
   $scope.save = (fight, competitor_winner_id) ->
