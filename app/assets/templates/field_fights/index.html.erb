@@ -1,10 +1,10 @@
 <h1>Mark Fight Winners</h1>
 <div ng-controller="FieldsIndexCtrl">
   <div class="well well-small row margin-left-0" ng-repeat="field in fields">
-    <div class="span9 margin-left-0">
+    <div class="span12 margin-left-0">
       <div class="label label-info">{{field.name}}</div>
     </div>
-    <div class="span9 margin-left-0">
+    <div class="span12 margin-left-0">
       <div class="span2 well well-small margin-left-20" ng-repeat="fight in field_fights | filter: { field_actual_id : field.id }">
         <a href="/fights/{{fight.id}}">
           <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>

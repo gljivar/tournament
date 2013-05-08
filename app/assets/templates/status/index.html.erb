@@ -1,6 +1,16 @@
+<script src="/stream/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('/', {resource: 'stream/socket.io'});
+  socket.on('fight', function (data) {
+    console.log(data);
+//    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+
+
 <h1>Susedgrad Sokol Pokal 2013 - status borilišta</h1>
 <div ng-controller="FieldsIndexCtrl">
-  <div class="well well-small row margin-left-0" ng-repeat="field in fields">
+  <div class="well well-small row margin-left-0" ng-repeat="field in fields | orderBy:fieldOrder">
     <div class="span9 margin-left-0">
       <div class="label label-info">{{field.name}}</div>
     </div>
