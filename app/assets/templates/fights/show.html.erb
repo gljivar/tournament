@@ -22,43 +22,52 @@
   {{fight.category.name}}
 </p>
 
-<p>
-  <b>Competitor blue</b><br>
-  {{fight.competitor_blue.lot_number}} - {{fight.competitor_blue.last_name}}
-  <span ng-show="fight.competitor_blue_id == null">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</span>
-</p>
-
-<p>
+<div class="row">
+  <div class="span4">
+  <p>
+    <b>Competitor blue</b><br>
+    {{fight.competitor_blue.lot_number}} - {{fight.competitor_blue.last_name}}
+    <span ng-show="fight.competitor_blue_id == null">Winner of {{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</span>
+  </p>
+  </div>
+  <div class="span4">
+  <p>
   <b>Competitor red</b><br>
-  {{fight.competitor_red.lot_number}} - {{fight.competitor_red.last_name}}
-  <span ng-show="fight.competitor_red_id == null">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</span>
-</p>
-
+    {{fight.competitor_red.lot_number}} - {{fight.competitor_red.last_name}}
+    <span ng-show="fight.competitor_red_id == null">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</span>
+  </p>
+  </div>
+</div>
 <p>
   <b>Competitor winner</b><br>
   {{fight.competitor_winner.last_name}}
   <span ng-show="fight.competitor_winner_id == null">Fight not yet finished</span>
 </p>
 
-<p>
-  <b>Previous fight blue</b><br>
-  <div ng-show="fight.previous_fight_blue.id != null">
-  <a ng-show="fight.previous_fight_blue.id != null"  class="a-white" href="/fights/{{fight.previous_fight_blue.id}}">
-    <div class="badge badge-info">{{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
-  </a>
+<div class="row">
+  <div class="span4">
+  <p>
+    <b>Previous fight blue</b><br>
+    <div ng-show="fight.previous_fight_blue.id != null">
+    <a ng-show="fight.previous_fight_blue.id != null"  class="a-white" href="/fights/{{fight.previous_fight_blue.id}}">
+      <div class="badge badge-info">{{fight.previous_fight_blue.field_initial.name}}-{{fight.previous_fight_blue.number}}</div>
+    </a>
+    </div>
+    <span ng-show="fight.previous_fight_blue_id == null">No previous blue fight</span> 
+  </p>
   </div>
-  <span ng-show="fight.previous_fight_blue_id == null">No previous blue fight</span> 
-</p>
-
-<p>
-  <b>Previous fight red</b><br>
-  <div ng-show="fight.previous_fight_red.id != null">
-  <a class="a-white" href="/fights/{{fight.previous_fight_red.id}}">
-    <div class="badge badge-info">{{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div>
-  </a>
+  <div class="span4">
+  <p>
+    <b>Previous fight red</b><br>
+    <div ng-show="fight.previous_fight_red.id != null">
+    <a class="a-white" href="/fights/{{fight.previous_fight_red.id}}">
+      <div class="badge badge-info">{{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div>
+    </a>
+    </div>
+    <span ng-show="fight.previous_fight_red_id == null">No previous red fight</span> 
+  </p>
   </div>
-  <span ng-show="fight.previous_fight_red_id == null">No previous red fight</span> 
-</p>
+</div>
 
 <div class="form-actions">
   <a ng-show="TournamentGlobal.loggedIn" href="/fights/{{fight.id}}/edit"
