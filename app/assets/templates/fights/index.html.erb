@@ -7,7 +7,7 @@
   <small>Press on Initial number to see details of the fight</small>
 </p>
 <br/>
-
+<input type="text" ng-model="search" class="search-query" placeholder="Search">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,7 +22,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="fight in fights">
+    <tr ng-repeat="fight in fights | filter:search">
         <td>
           <a href="/fights/{{fight.id}}">
           <div class="badge badge-info">{{fight.field_initial.name}}-{{fight.number}}</div>
