@@ -7,7 +7,7 @@ StatusIndexCtrl = ($scope, Fight, $location, $routeParams) ->
   )
   socket.on "fight", (data) ->
     $scope.field_fights = Fight.field_fights() #query()
-    console.log data
+    # console.log data
 
   $scope.field_fights = Fight.field_fights() #query()
 
