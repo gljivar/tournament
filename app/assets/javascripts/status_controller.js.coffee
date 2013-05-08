@@ -6,6 +6,7 @@ StatusIndexCtrl = ($scope, Fight, $location, $routeParams) ->
     resource: "stream/socket.io"
   )
   socket.on "fight", (data) ->
+    $scope.field_fights = Fight.field_fights() #query()
     console.log data
 
   $scope.field_fights = Fight.field_fights() #query()
