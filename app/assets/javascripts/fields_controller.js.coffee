@@ -14,6 +14,7 @@ FieldsIndexCtrl = ($scope, Field, TournamentGlobal) ->
 FieldsIndexCtrl.$inject = ['$scope', 'Field', 'TournamentGlobal'];
 
 FieldsCreateCtrl = ($scope, $location, Field) ->
+  $scope.field = new Field()
   $scope.save = ->
     Field.save $scope.field, (field) ->
       $location.path "/fields/#{field.id}/edit"

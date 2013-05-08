@@ -14,6 +14,7 @@ CategoriesIndexCtrl = ($scope, Category, TournamentGlobal) ->
 CategoriesIndexCtrl.$inject = ['$scope', 'Category', 'TournamentGlobal'];
 
 CategoriesCreateCtrl = ($scope, $location, Category) ->
+  $scope.category = new Category()
   $scope.save = ->
     Category.save $scope.category, (category) ->
       $location.path "/categories/#{category.id}/edit"

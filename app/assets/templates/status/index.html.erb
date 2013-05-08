@@ -1,6 +1,6 @@
-<h1>Fights Status</h1>
+<h1>Susedgrad Sokol Pokal 2013 - status borilišta</h1>
 <div ng-controller="FieldsIndexCtrl">
-  <div class="well well-small row margin-left-0" ng-repeat="field in fields">
+  <div class="well well-small row margin-left-0" ng-repeat="field in fields | orderBy:fieldOrder">
     <div class="span9 margin-left-0">
       <div class="label label-info">{{field.name}}</div>
     </div>
@@ -27,7 +27,6 @@
             <small>({{fight.competitor_red.club.name}})</small>
           </div>
           <div ng-show="fight.competitor_red_id == null" class="text-error">Winner of {{fight.previous_fight_red.field_initial.name}}-{{fight.previous_fight_red.number}}</div>
-
         </div>
       </div>
     </div>  

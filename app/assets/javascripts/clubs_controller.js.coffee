@@ -14,6 +14,7 @@ ClubsIndexCtrl = ($scope, Club, TournamentGlobal) ->
 ClubsIndexCtrl.$inject = ['$scope', 'Club', 'TournamentGlobal'];
 
 ClubsCreateCtrl = ($scope, $location, Club) ->
+  $scope.club = new Club()
   $scope.save = ->
     Club.save $scope.club, (club) ->
       $location.path "/clubs/#{club.id}/edit"

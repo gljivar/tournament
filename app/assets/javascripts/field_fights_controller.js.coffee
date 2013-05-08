@@ -16,6 +16,9 @@ FieldFightsIndexCtrl = ($scope, Fight, $location, $routeParams, TournamentGlobal
       current_fight = f if f.competitor_winner_id == null and current_fight == null
     current_fight = fight if current_fight == null
     return current_fight == fight
+
+  $scope.fieldOrder = (fight) ->
+    return fight.name
           
 FieldFightsIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal']; 
 
