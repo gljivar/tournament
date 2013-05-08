@@ -1,6 +1,12 @@
 root = global ? window
 angular = root.angular
 
+#fix console.log
+if root.console isnt `undefined`
+  root.console = {}
+  root.console.error = ->
+  root.console.log = ->
+
 thisApp = angular.module("TournamentClient", ['tournament.directives', 'tournament.services', 'ngCookies', 'fights', 'fields', 'competitions', 'competitors', 'categories', 'clubs', 'countries', 'users', 'analytics']).config(['$routeProvider', '$locationProvider' , 
 ($routeProvider, $locationProvider) ->
   #$locationProvider.hashPrefix('');
