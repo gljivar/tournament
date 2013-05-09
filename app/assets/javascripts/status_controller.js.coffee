@@ -2,8 +2,8 @@
 root = global ? window
 
 StatusIndexCtrl = ($scope, Fight, TournamentGlobal) ->
-  if io isnt 'undefined'
-    socket = io.connect("/",
+  if root.io isnt `undefined`
+    socket = root.io.connect("/",
       resource: "stream/socket.io"
     )
 
