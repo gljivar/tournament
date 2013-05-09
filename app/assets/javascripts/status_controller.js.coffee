@@ -1,13 +1,19 @@
 
 root = global ? window
 
-StatusIndexCtrl = ($scope, Fight, $location, $routeParams) ->
-  socket = io.connect("/",
-    resource: "stream/socket.io"
-  )
-  socket.on "fight", (data) ->
-    $scope.field_fights = Fight.field_fights() #query()
-    # console.log data
+StatusIndexCtrl = ($scope, Fight, TournamentGlobal) ->
+  if io isnt 'undefined'
+    socket = io.connect("/",
+      resource: "stream/socket.io"
+    )
+
+    fightCallback = ->
+      $scope.field_fights = Fight.field_fights() #query()
+
+    $scope.$on('$destroy', ->
+      socket.removeListener("fight", fightCallback)
+    )
+    socket.on("fight", fightCallback)
 
   $scope.field_fights = Fight.field_fights() #query()
 
@@ -23,7 +29,7 @@ StatusIndexCtrl = ($scope, Fight, $location, $routeParams) ->
     current_fight = fight if current_fight == null
     return current_fight == fight
           
-StatusIndexCtrl.$inject = ['$scope', 'Fight']; 
+StatusIndexCtrl.$inject = ['$scope', 'Fight', 'TournamentGlobal']; 
 
 # exports
 root.StatusIndexCtrl  = StatusIndexCtrl

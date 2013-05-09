@@ -2,7 +2,7 @@ root = global ? window
 angular = root.angular
 
 #fix console.log
-if root.console isnt `undefined`
+if root.console is `undefined`
   root.console = {}
   root.console.error = ->
   root.console.log = ->
