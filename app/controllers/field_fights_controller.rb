@@ -2,8 +2,8 @@ class FieldFightsController < ApplicationController
 skip_before_filter :require_login , :only => [:index, :status, :repeater ]
 
   def index
-
-    @competition_id = 1
+    
+    @competition_id = Competition.find_by_name('Susedgrad Sokol Pokal 2013')
     @fields = Field.where(:competition_id => @competition_id)
 
     @limit_previous = 1
@@ -29,7 +29,7 @@ skip_before_filter :require_login , :only => [:index, :status, :repeater ]
 
   def status
 
-    @competition_id = 1
+    @competition_id = Competition.find_by_name('Susedgrad Sokol Pokal 2013')
     @fields = Field.where(:competition_id => @competition_id)
 
     @limit_previous = 1
