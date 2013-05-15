@@ -12,5 +12,11 @@ root.RowCtrl = function ($rootScope, $scope, $location) {
 		        $scope.sidebarClass = 'span3';
 			$scope.sidebarHide = false;
 		}
+
+		if (path === '/repeater') {
+			$scope.qrCodeShow = true;
+		} else {
+			$scope.qrCodeShow = false;
+		}
 	});
 };

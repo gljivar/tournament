@@ -61,7 +61,8 @@ FightsEditCtrl = ($scope, $location, $routeParams, Fight) ->
 
   $scope.save = ->
     Fight.update $scope.fight, (fight) ->
-      $location.path "/fights"
+      #$location.path "/fights"
+      $location.path "/fights/#{fight.id}/edit"
 
 
 FightsEditCtrl.$inject = ['$scope', '$location', '$routeParams', 'Fight'];
