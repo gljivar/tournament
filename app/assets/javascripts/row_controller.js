@@ -14,9 +14,16 @@ root.RowCtrl = function ($rootScope, $scope, $location) {
 		}
 
 		if (path === '/repeater') {
+<<<<<<< HEAD
 			$scope.qrCodeShow = true;
 		} else {
 			$scope.qrCodeShow = false;
 		}
+=======
+                        $scope.qrCodeShow = true;
+                } else {
+                        $scope.qrCodeShow = false;
+                }
+>>>>>>> 32c828f6381c7275df07b5341813136d30523e4f
 	});
 };
